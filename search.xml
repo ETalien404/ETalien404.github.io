@@ -4,11 +4,24 @@
   
     
     <entry>
+      <title>光合远见实验室比赛回顾</title>
+      <link href="/2024/10/15/%E5%85%89%E5%90%88%E8%BF%9C%E8%A7%81%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%AF%94%E8%B5%9B%E5%9B%9E%E9%A1%BE/"/>
+      <url>/2024/10/15/%E5%85%89%E5%90%88%E8%BF%9C%E8%A7%81%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%AF%94%E8%B5%9B%E5%9B%9E%E9%A1%BE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h2><p>笔者侥幸通过了测试,乘着还未过去许久,回顾与反思程序设计的不足及改进措施.</p><hr><h2 id="B2114-配对碱基链"><a href="#B2114-配对碱基链" class="headerlink" title="B2114. 配对碱基链"></a>B2114. 配对碱基链</h2><p>题目描述<br>脱氧核糖核酸(DNA)由两条互补的碱基链以双螺旋的方式结合而成.<br>而构成 DNA 的碱基共有4种:</p><p>分别为<br>腺嘌呤(A)<br>鸟嘌呤(G)<br>胸腺嘧啶(T)<br>胞嘧啶(C)<br>我们知道,在两条互补碱基链的对应位置上,腺嘌呤总是和胸腺嘧啶配对,鸟嘌呤总是和胞嘧啶配对.<br>你的任务就是根据一条单链上的碱基序列,给出对应的互补链上的碱基序列.</p><p>输入格式<br>一个字符串,表示一条碱基链.</p><p>这个字符串只含有大写字母<br>A,T,G,C分别表示腺嘌呤,胸腺嘧啶,鸟嘌呤和胞嘧啶.</p><p>字符串长度不超过255.</p><p>输出格式<br>一个只含有大写字母 A,T,G,C 的字符串，为与输入的碱基链互补的碱基链。</p><p>输入数据 1<br>ATATGGATGGTGTTTGGCTCTG</p><p>输出数据 1<br>TATACCTACCACAAACCGAGAC</p><hr><p>个人评价:要点(字符串,数组,循环,条件判断)<br>在考场中本人就犯以下问题:<br>(1)字符数组写好,但一直读入导致输入数据读完还接着读.(for循环一直读入的原因)<br>(2)”&#x3D;&#x3D;”与”&#x3D;”的错误应用.(“&#x3D;&#x3D;”才是等于,”&#x3D;”是赋值（右赋值左）)<br>(3)重复输出.</p><p>正确代码如下:</p><pre><code> #define _CRT_SECURE_NO_WARNINGS #include &lt;cmath&gt; #include &lt;map&gt; #include &lt;string.h&gt; #include &lt;iostream&gt; #include &lt;cstring&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; using namespace std; int main()&#123;char line[255];scanf(&quot;%s&quot;, line);for (int i = 0; i &lt; 255; i++)&#123;    if (line[i] == &#39;A&#39;)    &#123;        cout &lt;&lt; &#39;T&#39;;    &#125;    else if (line[i] == &#39;T&#39;)    &#123;        cout &lt;&lt; &#39;A&#39;;    &#125;    else if (line[i] == &#39;G&#39;)    &#123;        cout &lt;&lt; &#39;C&#39;;    &#125;    else if (line[i] == &#39;C&#39;)    &#123;        cout &lt;&lt; &#39;G&#39;;    &#125;&#125;return 0;&#125;</code></pre><hr><h2 id="B-矩阵乘法"><a href="#B-矩阵乘法" class="headerlink" title="B. 矩阵乘法"></a>B. 矩阵乘法</h2><p>题目描述:</p><p>n×m 阶的矩阵A乘以m*k 阶的矩阵B得到的矩阵C是n×k阶的,且<br>C[i][j]&#x3D;A[i][0]×B[0][j]+A[i][1]×B[1][j]+……+A[i][m−1]×B[m−1][j]<br>(C[i][j] 表示C矩阵中第i行第j列元素).</p><p>输入格式:<br>第一行为 n,m,k,表示A矩阵是n行m列,B矩阵是m行k列,n,m,k均小于100.</p><p>然后先后输入A和B两个矩阵,A矩阵n行m列,B矩阵 m行k列,矩阵中每个元素的绝对值不会大于1000.</p><p>输出格式</p><p>输出矩阵C,一共 n 行,每行 k 个整数,整数之间以一个空格分开.</p><p>输入数据 1<br>3 2 3<br>1 1<br>1 1<br>1 1<br>1 1 1<br>1 1 1<br>输出数据 1<br>2 2 2<br>2 2 2<br>2 2 2</p><hr><p>个人评价:<br>这是线代!这一定是线代吧!!!不过抛开background不谈,还是要注意范围,线代学到矩阵会特别好懂此题.<br>本质是数学.二维数组+三重for循环表达+格式化输出即可.</p><p>正确代码如下:<br>       #define _CRT_SECURE_NO_WARNINGS<br>       #include <cmath><br>       #include <map><br>       #include&lt;string.h&gt;<br>       #include <iostream><br>       #include<cstring><br>       #include &lt;stdio.h&gt;<br>       #include &lt;stdlib.h&gt;<br>       using namespace std;</p><pre><code>    int main ()&#123;int n;int m;int k;cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;int A[110][110];int B[110][110];int C[110][110];for (int i = 0; i &lt; n; ++i)&#123;    for (int j = 0; j &lt; m; ++j)    &#123;        cin &gt;&gt; A[i][j];    &#125;&#125;for (int i = 0; i &lt; m; ++i)&#123;    for (int j = 0; j &lt; k; ++j)    &#123;        cin &gt;&gt; B[i][j];    &#125;&#125;for (int i = 0; i &lt; n; ++i)&#123;    for (int j = 0; j &lt; k; ++j)    &#123;        C[i][j] = 0;        for (int a = 0; a &lt; m; ++a)        &#123;            C[i][j] += A[i][a] * B[a][j]//悲啊!&quot;+&quot;忘了写&quot;+=&quot;表示累加,单纯的&quot;=&quot;会覆盖前一次计算!!!;        &#125;    &#125;&#125;for (int i = 0; i &lt; n; ++i)&#123;    for (int j = 0; j &lt; k; ++j)    &#123;        cout &lt;&lt; C[i][j]&lt;&lt;&quot; &quot;;    &#125;    cout &lt;&lt; endl;&#125;return 0;&#125;</code></pre><hr><h2 id="D-斐波那契数列"><a href="#D-斐波那契数列" class="headerlink" title="D. 斐波那契数列"></a>D. 斐波那契数列</h2><p>题目描述</p><p>斐波那契数列是指这样的数列:数列的第一个和第二个数都为1,接下来每个数都等于前面2 个数之和.<br>给出一个正整数a,要求斐波那契数列中第 a 个数是多少。</p><p>输入格式</p><p>第 1 行是测试数据的组数n,后面跟着 n 行输入。每组测试数据占 1 行，包括一个正整数a（1≤a≤30).</p><p>输出格式</p><p>输出有 n 行，每行输出对应一个输入.输出应是一个正整数,为斐波那契数列中第 a 个数的大小。</p><p>输入数据 1<br>4<br>5<br>2<br>19<br>1<br>输出数据 1<br>5<br>1<br>4181<br>1</p><hr><p>个人评价:<br>(函数+递归(只能说出题者没有故意刁难我们出一个超过int类型的数,不然还要%))</p><p>代码如下:<br>        #define _CRT_SECURE_NO_WARNINGS<br>        #include <cmath><br>        #include <map><br>        #include&lt;string.h&gt;<br>        #include <iostream><br>        #include<cstring><br>        #include &lt;stdio.h&gt;<br>        #include &lt;stdlib.h&gt;<br>        using namespace std;</p><pre><code>    int pell(int n)&#123; if (n == 1)&#123;    return 1;&#125;else if (n == 2)&#123;    return 1;&#125;else&#123;    int a1 = 1, a2 = 1, a3;    for (int i = 0; i &lt; n - 2; i++)    &#123;        a3 = a1+a2;        a1 = a2;        a2 = a3;    &#125;    return a2;&#125;&#125;int main()&#123;int n;int b;cin &gt;&gt; n;for (int i = 0; i &lt; n; i++)&#123;    cin &gt;&gt; b;    cout &lt;&lt; pell(b) &lt;&lt; endl;&#125;return 0;  &#125;</code></pre><hr><h2 id="C-车厢重组"><a href="#C-车厢重组" class="headerlink" title="C.车厢重组"></a>C.车厢重组</h2><p>题目描述:<br>在一个旧式的火车站旁边有一座桥,其桥面可以绕河中心的桥墩水平旋转.<br>一个车站的职工发现桥的长度最多能容纳两节车厢,如果将桥旋转 180 度,则可以把相邻两节车厢的位置交换,用这种方法可以重新排列车厢的顺序.<br>于是他就负责用这座桥将进站的车厢按车厢号从小到大排列.他退休后,火车站决定将这一工作自动化,其中一项重要的工作是编一个程序,输入初始<br>的车厢顺序,计算最少用多少步就能将车厢排序.</p><p>输入格式<br>共两行.</p><p>第一行是车厢总数N(≤10000).</p><p>第二行是N个不同的数表示初始的车厢顺序.<br>(注:实际上数据中并不都在同一行,有可能分行输入)</p><p>输出格式<br>一个整数,最少的旋转次数.</p><p>输入数据 1<br>4<br>4 3 2 1<br>输出数据 1<br>6</p><p>个人反思:开始区分,冒泡排序用的不熟练,会用的写的很快.重新做一遍仍有问题.(具体在代码区)</p><hr><p>代码如下:<br>#define _CRT_SECURE_NO_WARNINGS<br>#include <cmath><br>#include <map><br>#include&lt;string.h&gt;<br>#include <iostream><br>#include<cstring><br>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include&lt;stdbool.h&gt;<br>using namespace std;<br>int b &#x3D; 0;<br>void BubbleSort(int a[], int size)<br>{<br>    for (int i &#x3D; size - 1; i &gt; 0; –i)<br>    {<br>        for (int j &#x3D; 0; j &lt; i; ++ j)<br>        {<br>            if (a[j] &gt; a[j + 1])<br>            {<br>                int tmp &#x3D; a[j];<br>                a[j] &#x3D; a[j + 1];<br>                a[j + 1] &#x3D; tmp;<br>                b++;  &#x2F;&#x2F;就是这里统计次数,放在if里面在每次交换时统计次数.<br>            }<br>        }<br>    }<br>}</p><pre><code> int main()&#123;int N;cin &gt;&gt; N;int a[10001];for (int i = 0; i &lt; N; i++)&#123;    cin &gt;&gt; a[i];&#125;BubbleSort(a, N);cout &lt;&lt; b;return 0;  &#125;</code></pre><hr><h2 id="E-枚举排列"><a href="#E-枚举排列" class="headerlink" title="E. 枚举排列"></a>E. 枚举排列</h2><hr><p>题目描述<br>今有n名学生,要从中选出 k 人排成一列拍照.<br>请按字典序输出所有可能的排列方式.</p><p>输入格式<br>仅一行,两个正整数 n,k.</p><p>输出格式<br>若干行,每行 k 个正整数,表示一种可能的队伍顺序.</p><p>输入数据 1<br>3 2<br>输出数据 1<br>1 2<br>1 3<br>2 1<br>2 3<br>3 1<br>3 2<br>提示<br>对于100% 的数据,1≤k≤n≤10.</p><p>个人反思:深搜…还结合字典序…萌新杀手…<br>具体可看:<a href="https://blog.csdn.net/qq_37050329/article/details/86637183?ops_request_misc=%257B%2522request%255Fid%2522%253A%25223D39BCCB-0B0C-4447-8EFD-CE4040FF37C4%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=3D39BCCB-0B0C-4447-8EFD-CE4040FF37C4&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-86637183-null-">https://blog.csdn.net/qq_37050329/article/details/86637183?ops_request_misc=%257B%2522request%255Fid%2522%253A%25223D39BCCB-0B0C-4447-8EFD-CE4040FF37C4%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=3D39BCCB-0B0C-4447-8EFD-CE4040FF37C4&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-86637183-null-</a><br>         null.142^v100^pc_search_result_base3&amp;utm_term&#x3D;%E5%AD%97%E5%85%B8%E5%BA%8F&amp;spm&#x3D;1018.2226.3001.4187<br>代码如下:</p><p>#define _CRT_SECURE_NO_WARNINGS<br>#include <cmath><br>#include <map><br>#include&lt;string.h&gt;<br>#include <iostream><br>#include<cstring><br>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include&lt;stdbool.h&gt;<br>using namespace std;</p><p>#define MAX_N 10<br>bool used [MAX_N + 1];<br>int path [MAX_N + 1];<br>int n, k;<br>void backtrack(int depth)<br>{<br>    if (depth &#x3D;&#x3D; k)<br>    {<br>        for (int i &#x3D; 0; i &lt; k; i++)<br>        {<br>            printf(“%d “, path[i]);<br>        }<br>    printf(“\n”);<br>    return;<br>    }<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        if (!used[i])<br>        {<br>            used[i] &#x3D; true;<br>            path[depth] &#x3D; i;<br>            backtrack(depth + 1);<br>            used[i] &#x3D; false;<br>        }<br>    }<br>}</p><pre><code>int main()&#123;scanf(&quot;%d %d&quot;, &amp;n ,&amp;k);memset(used, false, sizeof(used));backtrack(0);return 0;&#125;</code></pre><hr>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我的第一篇虚拟机文章</title>
       <link href="/2024/10/07/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%96%87%E7%AB%A0/"/>
       <url>/2024/10/07/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%96%87%E7%AB%A0/</url>
       
-        <content type="html"><![CDATA[<p>笔者虚拟机搭建比较简单，是从360管家下的WMware，所以不过多阐述。<br>建议去清华镜像站下载比较方便</p>]]></content>
+        <content type="html"><![CDATA[<p>笔者虚拟机搭建比较简单，是从360管家下的VMware，所以不过多阐述。<br>建议去清华镜像站下载比较方便.</p>]]></content>
       
       
       
@@ -30,17 +43,6 @@
     
   
   
-    
-    
-    <entry>
-      <title>����</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
     
     
     <entry>
@@ -69,6 +71,17 @@
       <title>����</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>����</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
