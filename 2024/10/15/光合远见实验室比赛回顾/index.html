@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>光合远见实验室比赛回顾 | 一位元宇宙爱好者的随笔</title><meta name="author" content="ETalien"><meta name="copyright" content="ETalien"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="导言笔者侥幸通过了测试,乘着还未过去许久,回顾与反思程序设计的不足及改进措施.  B2114. 配对碱基链题目描述脱氧核糖核酸(DNA)由两条互补的碱基链以双螺旋的方式结合而成.而构成 DNA 的碱基共有4种: 分别为腺嘌呤(A)鸟嘌呤(G)胸腺嘧啶(T)胞嘧啶(C)我们知道,在两条互补碱基链的对应位置上,腺嘌呤总是和胸腺嘧啶配对,鸟嘌呤总是和胞嘧啶配对.你的任务就是根据一条单链上的碱基序列,给出">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>光合远见实验室比赛回顾 | 一位元宇宙爱好者的随笔</title><meta name="author" content="ETalien"><meta name="copyright" content="ETalien"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="导言笔者侥幸通过了测试,趁着还未过去许久,回顾与反思程序设计的不足及改进措施.  B2114. 配对碱基链题目描述脱氧核糖核酸(DNA)由两条互补的碱基链以双螺旋的方式结合而成.而构成 DNA 的碱基共有4种: 分别为腺嘌呤(A)鸟嘌呤(G)胸腺嘧啶(T)胞嘧啶(C)我们知道,在两条互补碱基链的对应位置上,腺嘌呤总是和胸腺嘧啶配对,鸟嘌呤总是和胞嘧啶配对.你的任务就是根据一条单链上的碱基序列,给出">
 <meta property="og:type" content="article">
 <meta property="og:title" content="光合远见实验室比赛回顾">
 <meta property="og:url" content="http://example.com/2024/10/15/%E5%85%89%E5%90%88%E8%BF%9C%E8%A7%81%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%AF%94%E8%B5%9B%E5%9B%9E%E9%A1%BE/index.html">
 <meta property="og:site_name" content="一位元宇宙爱好者的随笔">
-<meta property="og:description" content="导言笔者侥幸通过了测试,乘着还未过去许久,回顾与反思程序设计的不足及改进措施.  B2114. 配对碱基链题目描述脱氧核糖核酸(DNA)由两条互补的碱基链以双螺旋的方式结合而成.而构成 DNA 的碱基共有4种: 分别为腺嘌呤(A)鸟嘌呤(G)胸腺嘧啶(T)胞嘧啶(C)我们知道,在两条互补碱基链的对应位置上,腺嘌呤总是和胸腺嘧啶配对,鸟嘌呤总是和胞嘧啶配对.你的任务就是根据一条单链上的碱基序列,给出">
+<meta property="og:description" content="导言笔者侥幸通过了测试,趁着还未过去许久,回顾与反思程序设计的不足及改进措施.  B2114. 配对碱基链题目描述脱氧核糖核酸(DNA)由两条互补的碱基链以双螺旋的方式结合而成.而构成 DNA 的碱基共有4种: 分别为腺嘌呤(A)鸟嘌呤(G)胸腺嘧啶(T)胞嘧啶(C)我们知道,在两条互补碱基链的对应位置上,腺嘌呤总是和胸腺嘧啶配对,鸟嘌呤总是和胞嘧啶配对.你的任务就是根据一条单链上的碱基序列,给出">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/image/yuanshen103.jpg">
 <meta property="article:published_time" content="2024-10-15T07:03:35.000Z">
-<meta property="article:modified_time" content="2024-10-15T13:24:49.835Z">
+<meta property="article:modified_time" content="2024-11-03T08:55:54.403Z">
 <meta property="article:author" content="ETalien">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
@@ -150,8 +150,8 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-10-15 21:24:49'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen103.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">一位元宇宙爱好者的随笔</span></a><a class="nav-page-title" href="/"><span class="site-name">光合远见实验室比赛回顾</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">光合远见实验室比赛回顾</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-15T07:03:35.000Z" title="发表于 2024-10-15 15:03:35">2024-10-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-15T13:24:49.835Z" title="更新于 2024-10-15 21:24:49">2024-10-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h2><p>笔者侥幸通过了测试,乘着还未过去许久,回顾与反思程序设计的不足及改进措施.</p>
+  postUpdate: '2024-11-03 16:55:54'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen103.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">一位元宇宙爱好者的随笔</span></a><a class="nav-page-title" href="/"><span class="site-name">光合远见实验室比赛回顾</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">光合远见实验室比赛回顾</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-15T07:03:35.000Z" title="发表于 2024-10-15 15:03:35">2024-10-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T08:55:54.403Z" title="更新于 2024-11-03 16:55:54">2024-11-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="导言"><a href="#导言" class="headerlink" title="导言"></a>导言</h2><p>笔者侥幸通过了测试,趁着还未过去许久,回顾与反思程序设计的不足及改进措施.</p>
 <hr>
 <h2 id="B2114-配对碱基链"><a href="#B2114-配对碱基链" class="headerlink" title="B2114. 配对碱基链"></a>B2114. 配对碱基链</h2><p>题目描述<br>脱氧核糖核酸(DNA)由两条互补的碱基链以双螺旋的方式结合而成.<br>而构成 DNA 的碱基共有4种:</p>
 <p>分别为<br>腺嘌呤(A)<br>鸟嘌呤(G)<br>胸腺嘧啶(T)<br>胞嘧啶(C)<br>我们知道,在两条互补碱基链的对应位置上,腺嘌呤总是和胸腺嘧啶配对,鸟嘌呤总是和胞嘧啶配对.<br>你的任务就是根据一条单链上的碱基序列,给出对应的互补链上的碱基序列.</p>
@@ -209,8 +209,17 @@ return 0;
 <p>输入数据 1<br>3 2 3<br>1 1<br>1 1<br>1 1<br>1 1 1<br>1 1 1<br>输出数据 1<br>2 2 2<br>2 2 2<br>2 2 2</p>
 <hr>
 <p>个人评价:<br>这是线代!这一定是线代吧!!!不过抛开background不谈,还是要注意范围,线代学到矩阵会特别好懂此题.<br>本质是数学.二维数组+三重for循环表达+格式化输出即可.</p>
-<p>正确代码如下:<br>       #define _CRT_SECURE_NO_WARNINGS<br>       #include <cmath><br>       #include <map><br>       #include&lt;string.h&gt;<br>       #include <iostream><br>       #include<cstring><br>       #include &lt;stdio.h&gt;<br>       #include &lt;stdlib.h&gt;<br>       using namespace std;</p>
-<pre><code>    int main ()
+<p>正确代码如下:</p>
+<pre><code>   #define _CRT_SECURE_NO_WARNINGS
+   #include &lt;cmath&gt;
+   #include &lt;map&gt;
+   #include &lt;iostream&gt;
+   #include&lt;cstring&gt;
+   #include &lt;stdio.h&gt;
+   #include &lt;stdlib.h&gt;
+   using namespace std;
+
+    int main ()
 &#123;
 int n;
 int m;
@@ -265,11 +274,21 @@ return 0;
 <p>第 1 行是测试数据的组数n,后面跟着 n 行输入。每组测试数据占 1 行，包括一个正整数a（1≤a≤30).</p>
 <p>输出格式</p>
 <p>输出有 n 行，每行输出对应一个输入.输出应是一个正整数,为斐波那契数列中第 a 个数的大小。</p>
-<p>输入数据 1<br>4<br>5<br>2<br>19<br>1<br>输出数据 1<br>5<br>1<br>4181<br>1</p>
+<p>输入数据<br>1<br>4<br>5<br>2<br>19<br>1<br>输出数据<br>1<br>5<br>1<br>4181<br>1</p>
 <hr>
 <p>个人评价:<br>(函数+递归(只能说出题者没有故意刁难我们出一个超过int类型的数,不然还要%))</p>
-<p>代码如下:<br>        #define _CRT_SECURE_NO_WARNINGS<br>        #include <cmath><br>        #include <map><br>        #include&lt;string.h&gt;<br>        #include <iostream><br>        #include<cstring><br>        #include &lt;stdio.h&gt;<br>        #include &lt;stdlib.h&gt;<br>        using namespace std;</p>
-<pre><code>    int pell(int n)
+<p>代码如下:</p>
+<pre><code>    #define _CRT_SECURE_NO_WARNINGS
+    #include &lt;cmath&gt;
+    #include &lt;map&gt;
+    #include &lt;iostream&gt;
+    #include&lt;cstring&gt;
+    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;
+    using namespace std;
+
+
+    int pell(int n)
 &#123; 
 if (n == 1)
 &#123;
@@ -319,8 +338,35 @@ return 0;
 <p>输入数据 1<br>4<br>4 3 2 1<br>输出数据 1<br>6</p>
 <p>个人反思:开始区分,冒泡排序用的不熟练,会用的写的很快.重新做一遍仍有问题.(具体在代码区)</p>
 <hr>
-<p>代码如下:<br>#define _CRT_SECURE_NO_WARNINGS<br>#include <cmath><br>#include <map><br>#include&lt;string.h&gt;<br>#include <iostream><br>#include<cstring><br>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include&lt;stdbool.h&gt;<br>using namespace std;<br>int b &#x3D; 0;<br>void BubbleSort(int a[], int size)<br>{<br>    for (int i &#x3D; size - 1; i &gt; 0; –i)<br>    {<br>        for (int j &#x3D; 0; j &lt; i; ++ j)<br>        {<br>            if (a[j] &gt; a[j + 1])<br>            {<br>                int tmp &#x3D; a[j];<br>                a[j] &#x3D; a[j + 1];<br>                a[j + 1] &#x3D; tmp;<br>                b++;  &#x2F;&#x2F;就是这里统计次数,放在if里面在每次交换时统计次数.<br>            }<br>        }<br>    }<br>}</p>
-<pre><code> int main()
+<p>代码如下:</p>
+<pre><code>#define _CRT_SECURE_NO_WARNINGS
+#include &lt;cmath&gt;
+#include &lt;map&gt;
+#include &lt;iostream&gt;
+#include&lt;cstring&gt;
+#include &lt;stdio.h&gt;           
+#include &lt;stdlib.h&gt;      
+#include&lt;stdbool.h&gt;
+using namespace std;       
+int b = 0;
+void BubbleSort(int a[], int size)
+&#123;
+for (int i = size - 1; i &gt; 0; --i)
+&#123;
+    for (int j = 0; j &lt; i; ++ j)
+    &#123;
+        if (a[j] &gt; a[j + 1])
+        &#123;
+            int tmp = a[j];
+            a[j] = a[j + 1];
+            a[j + 1] = tmp;
+            b++;  //就是这里统计次数,放在if里面在每次交换时统计次数.
+        &#125;
+    &#125;
+  &#125;
+&#125;
+
+ int main()
 &#123;
 int N;
 
@@ -343,9 +389,45 @@ return 0;
 <p>输出格式<br>若干行,每行 k 个正整数,表示一种可能的队伍顺序.</p>
 <p>输入数据 1<br>3 2<br>输出数据 1<br>1 2<br>1 3<br>2 1<br>2 3<br>3 1<br>3 2<br>提示<br>对于100% 的数据,1≤k≤n≤10.</p>
 <p>个人反思:深搜…还结合字典序…萌新杀手…<br>具体可看:<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37050329/article/details/86637183?ops_request_misc=%257B%2522request%255Fid%2522%253A%25223D39BCCB-0B0C-4447-8EFD-CE4040FF37C4%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=3D39BCCB-0B0C-4447-8EFD-CE4040FF37C4&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-86637183-null-">https://blog.csdn.net/qq_37050329/article/details/86637183?ops_request_misc=%257B%2522request%255Fid%2522%253A%25223D39BCCB-0B0C-4447-8EFD-CE4040FF37C4%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=3D39BCCB-0B0C-4447-8EFD-CE4040FF37C4&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-86637183-null-</a><br>         null.142^v100^pc_search_result_base3&amp;utm_term&#x3D;%E5%AD%97%E5%85%B8%E5%BA%8F&amp;spm&#x3D;1018.2226.3001.4187<br>代码如下:</p>
-<p>#define _CRT_SECURE_NO_WARNINGS<br>#include <cmath><br>#include <map><br>#include&lt;string.h&gt;<br>#include <iostream><br>#include<cstring><br>#include &lt;stdio.h&gt;<br>#include &lt;stdlib.h&gt;<br>#include&lt;stdbool.h&gt;<br>using namespace std;</p>
-<p>#define MAX_N 10<br>bool used [MAX_N + 1];<br>int path [MAX_N + 1];<br>int n, k;<br>void backtrack(int depth)<br>{<br>    if (depth &#x3D;&#x3D; k)<br>    {<br>        for (int i &#x3D; 0; i &lt; k; i++)<br>        {<br>            printf(“%d “, path[i]);<br>        }<br>    printf(“\n”);<br>    return;<br>    }<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        if (!used[i])<br>        {<br>            used[i] &#x3D; true;<br>            path[depth] &#x3D; i;<br>            backtrack(depth + 1);<br>            used[i] &#x3D; false;<br>        }<br>    }<br>}</p>
-<pre><code>int main()
+<pre><code>  #define _CRT_SECURE_NO_WARNINGS
+  #include &lt;cmath&gt;
+  #include &lt;map&gt;
+  #include&lt;string.h&gt;
+  #include &lt;iostream&gt;
+  #include&lt;cstring&gt;
+  #include &lt;stdio.h&gt;
+  #include &lt;stdlib.h&gt;
+  #include&lt;stdbool.h&gt;
+using namespace std;
+
+#define MAX_N 10
+bool used [MAX_N + 1];
+int path [MAX_N + 1];
+int n, k;
+void backtrack(int depth)
+&#123;
+if (depth == k)
+&#123;
+    for (int i = 0; i &lt; k; i++)
+    &#123;
+        printf(&quot;%d &quot;, path[i]);
+    &#125;
+printf(&quot;\n&quot;);
+return;
+&#125;
+for (int i = 1; i &lt;= n; i++)
+&#123;
+    if (!used[i])
+    &#123;
+        used[i] = true;
+        path[depth] = i;
+        backtrack(depth + 1);
+        used[i] = false;
+    &#125;
+   &#125;
+ &#125;
+
+int main()
 &#123;
 scanf(&quot;%d %d&quot;, &amp;n ,&amp;k);
 memset(used, false, sizeof(used));
