@@ -142,22 +142,22 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
+      <title>��Ӱ</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
       
-        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>����</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
       
     </entry>
     
@@ -175,9 +175,9 @@
     
     
     <entry>
-      <title>��Ӱ</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>����</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
