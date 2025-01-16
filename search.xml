@@ -120,17 +120,6 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -142,11 +131,33 @@
     
     
     <entry>
+      <title>movies</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>music</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
       
         <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
       
     </entry>
     
@@ -178,17 +189,6 @@
       <title>about</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>movies</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
