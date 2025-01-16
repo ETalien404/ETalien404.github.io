@@ -79,6 +79,50 @@
     
     
     <entry>
+      <title>牛客周赛round64</title>
+      <link href="/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/"/>
+      <url>/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/</url>
+      
+        <content type="html"><![CDATA[<p>下面依据(1–10)星级评判本次周赛:</p><h1 id="小红的对错判断"><a href="#小红的对错判断" class="headerlink" title="小红的对错判断"></a>小红的对错判断</h1><p>题目描述<br>小红在判题的时候,经常发现选手把”Yes”输出成”YES”或者”yes”,她希望写一个spj(special judge)来判断选手是否输出了”Yes”.你能帮帮她吗?<br>输入描述:<br>一个长度不超过3的,仅由小写字母或者大写字母组成.<br>输出描述:<br>若字符串可以通过大小写转换变成”Yes”,则输出”accept”.否则输出”wrong answer”.</p><p>评价:  1星,无脑签到题,考查字符串,toupper,tolower函数的用法.如果硬用if,6种情况.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;using namespace std;void func()&#123;char crr[3] = &#123;0&#125;;scanf(&quot;%s&quot;,crr);for (int i = 0; crr[i]; i++)&#123;    crr[i]=toupper(crr[i]);&#125;if (crr[0] == &#39;Y&#39; &amp;&amp; crr[1] == &#39;E&#39; &amp;&amp; crr[2] == &#39;S&#39;)&#123;    printf(&quot;accept&quot;);&#125;else&#123;    printf(&quot;wrong answer&quot;);&#125;&#125;int main()&#123;func();return 0;&#125;</code></pre><hr><h1 id="小红的幂表达"><a href="#小红的幂表达" class="headerlink" title="小红的幂表达"></a>小红的幂表达</h1><p>题目描述<br>小红拿到了一个正整数,请你帮小红将其表示为幂(a^b)的形式.<br>输入描述:</p><p>一个正整数x (2≤x≤10^5)<br>输出描述:<br>第一行输出x.<br>接下来每一行输出一个幂的表达式。<br>请按指数从小到大的顺序输出。</p><p>评价: 2星,高一数学对数函数换底公式.当时没有这么想,直接优化暴力就过了.</p><hr><pre><code>//实战AC:重点在func1暴力找对数和指数#include &lt;bits/stdc++.h&gt;using namespace std;void func1(int x)&#123; for (int i = sqrt(x); i &gt; 1; i--)&#123;    int j = 1;    int m = i;    while (m &lt; x)    &#123;        m = m * i;        j++;    &#125;    if (m == x)    &#123;        printf(&quot;=%d^%d\n&quot;, i, j);    &#125;&#125;&#125;void func()&#123;int x;cin &gt;&gt; x;cout &lt;&lt; x&lt;&lt;endl;cout &lt;&lt;&quot;=&quot;&lt;&lt; x &lt;&lt; &quot;^&quot; &lt;&lt; &quot;1&quot; &lt;&lt; endl;func1(x);&#125;int main()&#123;func();return 0;&#125;正规解法(也是暴力遍历,复杂度跟我差不多):void func1(int x)&#123; for (int i = sqrt(x); i &gt; 0; i--)&#123;    int m = log2(x) / log2(i);    if (x == pow(i , m))//pow明显增加时间复杂度.    &#123;        printf(&quot;=%d^%d\n&quot;, i, m);    &#125;&#125;&#125;</code></pre><hr><h1 id="小红的前缀询问"><a href="#小红的前缀询问" class="headerlink" title="小红的前缀询问"></a>小红的前缀询问</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/92662/C">https://ac.nowcoder.com/acm/contest/92662/C</a></p><p>评价:</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法竞赛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 朝花夕拾 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>牛客周赛round64</title>
+      <link href="/2024/10/06/%E8%A1%A5%E9%A2%98%E7%B3%BB%E5%88%97/"/>
+      <url>/2024/10/06/%E8%A1%A5%E9%A2%98%E7%B3%BB%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> ACM新手村 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我的第一篇BLOG搭建文章</title>
       <link href="/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/"/>
       <url>/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
@@ -102,49 +146,14 @@
     </entry>
     
     
-    
-    <entry>
-      <title>我的第一篇BLOG搭建文章</title>
-      <link href="/2024/10/06/%E8%A1%A5%E9%A2%98%E7%B3%BB%E5%88%97/"/>
-      <url>/2024/10/06/%E8%A1%A5%E9%A2%98%E7%B3%BB%E5%88%97/</url>
-      
-        <content type="html"><![CDATA[<p>笔者在这里使用的是hexo+github的个人博客搭建,如有错误请各位大佬指正。</p><h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1.到 <a href="https://nodejs.cn/">https://nodejs.cn/</a> 下载Node.js下载常用版就行。为hexo运行搭建环境。<br>2.（1）github注册。如果English水平不高建议配上网易有道翻译。按web流程进行github注册。<br>  （2）创建代码库，勾选Public，在Repository name中按”用户名.github.io”(一定是这格式！)创建。<br>   (3) 可以自己在code&lt;&gt;选项上进行测试.<br>3. git for windows安装<br>   (1)输入<a href="https://gitforwindows.org/%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E3%80%82">https://gitforwindows.org/进入官网点击下载。</a><br>   (2)git安装默认C盘，可以根据需要自行更改。<br>   (3)勾选 don’t create a start menu folder<br>   (4)注意！！！！！github把master改名main了,配置congif要更改!!也就是branch:master改成branch:main!!<br>   (5)后面默认就行。<br>4.githubShh配置<br>   (1)以管理员身份打开git.bash.exe.<br>   (2)输入命令 ssh-keygen -t rsa -C “github邮箱注册地址”(如果找不到到C盘搜.shh前提是环境安装好)然后回车。<br>   (3)打开github-settings-deploy keys title写用户名，key找到”id rua.pub”复制粘贴。</p><h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   (1)打开<a href="https://hexo.io/zh-cn/dots/">https://hexo.io/zh-cn/dots/</a><br>   (2)新建文件夹（命名自取）<br>   (3)在此文件夹下用管理员身份打开git.bash.exe.输入npm install hexo-cli -g<br>   (4)安装完用hexo -v验证。（确保路径正确）<br>   (5)在对应路径下输入hexo init初始化.<br>   (6)可以hexo s启动blog.<br>   当然这还未完成，还要挂到github上。<br>   (7)Ctrl+c先关掉。<br>   (8)好了，现在我们还需要装一个git部署插件,输入 snpm install –save hexo-deployer-git回车。<br>   (9)找到_config.yml用记事本打开，划到最底部，找到Depolyment,按如下格式配置。</p><pre><code> type: git repository: 自己的地址 branch:main(注意缩进与空格）</code></pre><p>   (10) hexo d部署(弹出方框输入账号）<br>   (11)成功！！！</p><h2 id="问题反思与感想"><a href="#问题反思与感想" class="headerlink" title="问题反思与感想"></a>问题反思与感想</h2><p>(1)短短几十行，但真正实践起来却要数十倍的时间，实践中，初步了解了0-1的艰难，各种问题层出不穷。<br>eg:路径不对—cd C:\  等去切换。<br>   获取管理员权限。<br>   上面的yml文件未配置好（细节在上）<br>   等。。<br>(2)总之，笔者在此受益颇多,感谢互联网的知识，优秀的作者，让我们前方的路清晰明朗。谢谢！！！</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
   
   
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>movies</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
-      
-        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
@@ -164,11 +173,33 @@
     
     
     <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>movies</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
     </entry>
     
@@ -186,9 +217,9 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
