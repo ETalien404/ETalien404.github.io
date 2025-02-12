@@ -1,0 +1,908 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>牛客寒假算法基础集训营1 | 一位元宇宙爱好者的随笔</title><meta name="author" content="ETalien"><meta name="copyright" content="ETalien"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="被暴打,拼尽全力还是没有让ACM大人尽兴…顺开,补题… A 茕茕孑立之影链接:https:&#x2F;&#x2F;ac.nowcoder.com&#x2F;acm&#x2F;contest&#x2F;95323&#x2F;A 知识点:数学 难度: 794 签到题,考虑倍数很容易想到质数,注意范围!10^18.也就是找一个在规定范围内尽可能大的质数.这里我们注意到10000000000000007是一个符合条件的质数.  #include &lt;bits&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客寒假算法基础集训营1">
+<meta property="og:url" content="http://example.com/2025/01/21/%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51/index.html">
+<meta property="og:site_name" content="一位元宇宙爱好者的随笔">
+<meta property="og:description" content="被暴打,拼尽全力还是没有让ACM大人尽兴…顺开,补题… A 茕茕孑立之影链接:https:&#x2F;&#x2F;ac.nowcoder.com&#x2F;acm&#x2F;contest&#x2F;95323&#x2F;A 知识点:数学 难度: 794 签到题,考虑倍数很容易想到质数,注意范围!10^18.也就是找一个在规定范围内尽可能大的质数.这里我们注意到10000000000000007是一个符合条件的质数.  #include &lt;bits&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/yuanshen39.jpg">
+<meta property="article:published_time" content="2025-01-21T05:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-01T15:52:32.581Z">
+<meta property="article:author" content="ETalien">
+<meta property="article:tag" content="ACM新手村">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/yuanshen39.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/01/21/%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '牛客寒假算法基础集训营1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-01 23:52:32'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/image/yuanshen101.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen103.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/yuanshen39.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">一位元宇宙爱好者的随笔</span></a><a class="nav-page-title" href="/"><span class="site-name">牛客寒假算法基础集训营1</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">牛客寒假算法基础集训营1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-21T05:00:00.000Z" title="发表于 2025-01-21 13:00:00">2025-01-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-01T15:52:32.581Z" title="更新于 2025-02-01 23:52:32">2025-02-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/">算法竞赛</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>被暴打,拼尽全力还是没有让ACM大人尽兴…<br>顺开,补题…</p>
+<h1 id="A-茕茕孑立之影"><a href="#A-茕茕孑立之影" class="headerlink" title="A 茕茕孑立之影"></a>A 茕茕孑立之影</h1><p>链接:<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/A">https://ac.nowcoder.com/acm/contest/95323/A</a></p>
+<p>知识点:数学</p>
+<p>难度: 794</p>
+<p>签到题,考虑倍数很容易想到质数,注意范围!10^18.也就是找一个在规定范围内尽可能大的质数.<br>这里我们注意到10000000000000007是一个符合条件的质数.</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+void func()
+&#123;
+int T;
+cin &gt;&gt; T;
+for (int i = 0; i &lt; T; i++)
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    
+    int ans = 0;
+    int* arr = (int*)malloc(n*sizeof(int));
+    for (int j = 0; j &lt; n; j++)
+    &#123;
+        cin &gt;&gt; arr[j];
+    &#125;
+    for (int j = 0; j &lt; n; j++)
+    &#123;
+        if (arr[j] == 1)
+        &#123;
+            printf(&quot;-1\n&quot;);
+            ans = 1;
+            break;
+        &#125;
+    &#125;
+    if (ans == 0)
+    &#123;
+        ll a = 10000000000000007;
+        printf(&quot;%lld\n&quot;, a);
+    &#125;
+    free(arr);
+&#125;
+&#125;
+int main() 
+&#123;
+func();
+&#125;
+</code></pre>
+<hr>
+<h1 id="B-一气贯通之刃"><a href="#B-一气贯通之刃" class="headerlink" title="B 一气贯通之刃"></a>B 一气贯通之刃</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/B">https://ac.nowcoder.com/acm/contest/95323/B</a></p>
+<p>知识点:树</p>
+<p>难度: 875</p>
+<p>数据结构,算是基础题.给定一棵树,要求一次遍历所有节点.<br>考查map的用法,看样例就可以知道,如果要一次遍历完,只需要找到只出现过一次的节点,当然要排除由多分支产生的一次节点.<br>感觉做复杂了…</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+void func()
+&#123;
+int n;
+cin &gt;&gt; n;
+map&lt;int, int&gt;mp;
+int** arr = (int**)malloc(n * sizeof(int*));//动态创建二维数组
+for (int i = 0; i &lt; n; i++)
+&#123;
+    arr[i] = (int*)malloc(2 * sizeof(int));//将列数定为2
+&#125;
+for (int i = 0; i &lt; n-1; i++)
+&#123;
+    for (int j = 0; j &lt; 2; j++)
+    &#123;
+        cin &gt;&gt; arr[i][j];
+        mp[arr[i][j]]++;  //hash list
+    &#125;
+&#125;
+int ans = 0;//记录分支数
+if (mp.size() != n)//判断种类,!=n直接排除
+&#123;
+    printf(&quot;-1\n&quot;);
+&#125;
+else
+&#123;
+    for (auto i = mp.begin(); i != mp.end(); i++) &#123;
+        if (i-&gt;second == 1)
+        &#123;
+            ans++;
+        &#125;
+    &#125;
+    if (ans != 2)//判断是否只有一个分支
+    &#123;
+        printf(&quot;-1\n&quot;);
+    &#125;
+    else
+    &#123;
+        for (auto i = mp.begin(); i != mp.end(); i++) &#123;
+            if (i-&gt;second == 1)
+            &#123;
+                cout &lt;&lt; i-&gt;first &lt;&lt; &quot; &quot;;//按键值对进行输出
+            &#125;
+        &#125;
+    &#125;
+&#125;
+for (int i = 0; i &lt; n; i++)
+&#123;
+    free(arr[i]);
+&#125;
+free(arr);	
+&#125;
+int main() 
+&#123;
+func();
+&#125;
+</code></pre>
+<hr>
+<h1 id="D-双生双宿之决"><a href="#D-双生双宿之决" class="headerlink" title="D 双生双宿之决"></a>D 双生双宿之决</h1><p>链接:<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/D">https://ac.nowcoder.com/acm/contest/95323/D</a></p>
+<p>知识点:模拟,排序&#x2F;stl</p>
+<p>难度: 621</p>
+<p>签到题,按照题目的要求来就行,可以排序,也可以不排序.<br>限定条件:2种元素,次数相同.</p>
+<hr>
+<pre><code>有排序:
+#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+void func()
+&#123;
+int T;
+cin &gt;&gt; T;
+for (int j = 0; j &lt; T; j++)
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    int* arr = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i &lt; n; i++)
+    &#123;
+        cin &gt;&gt; arr[i];
+    &#125;
+    sort(arr, arr + n);
+    int ans = 0;
+    if (arr[n / 2] == arr[n / 2 - 1])
+    &#123;
+        ans = 1;
+    &#125;   
+       if (n % 2 != 0)
+  &#123;
+   ans = 1;
+  &#125;  
+    for (int i = 1; i &lt; n / 2; i++)
+    &#123;
+        if (arr[i] != arr[i - 1])
+        &#123;
+            ans = 1;
+            break;
+        &#125;
+    &#125;
+    for (int i = n / 2 + 1; i &lt; n; i++)
+    &#123;
+        if (arr[i] != arr[i - 1])
+        &#123;
+            ans = 1;
+            break;
+        &#125;
+    &#125;        
+    if (ans == 0)
+    &#123;
+        printf(&quot;Yes\n&quot;);
+    &#125;
+    else
+    &#123;
+        printf(&quot;No\n&quot;);
+    &#125;
+    free(arr);
+&#125;
+&#125;
+ int main() 
+&#123;
+func();
+return 0;
+&#125;
+
+无排序:
+#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+
+using namespace std;
+void func()
+&#123;
+int T;
+cin &gt;&gt; T;
+for (int i = 0; i &lt; T; i++)
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    int ans1 = 0;
+    int ans2 = 0;
+    map&lt;int, int&gt;mp;
+    int* arr = (int*)malloc(n*sizeof(int));
+    for (int j = 0; j &lt; n; j++)
+    &#123;
+        cin &gt;&gt; arr[j];
+        mp[arr[j]]++;
+    &#125;
+    int crr[10] = &#123; 0 &#125;;
+    int k = 0;
+    if (mp.size() != 2)
+    &#123;
+        printf(&quot;No\n&quot;);
+    &#125;
+    else
+    &#123;
+        for (map&lt;int, int&gt;::iterator it = mp.begin(); it != mp.end(); it++)
+        &#123;
+            crr[k]=it-&gt;second;
+            k++;
+        &#125;
+        if (crr[0] == crr[1])
+        &#123;
+            printf(&quot;Yes\n&quot;);
+        &#125;
+        else
+        &#123;
+            printf(&quot;No\n&quot;);
+        &#125;
+        
+    &#125;
+    free(arr);
+  &#125;
+&#125;
+
+ int main() 
+&#123;
+func();
+&#125;
+</code></pre>
+<hr>
+<h1 id="G-井然有序之衡"><a href="#G-井然有序之衡" class="headerlink" title="G 井然有序之衡"></a>G 井然有序之衡</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/G">https://ac.nowcoder.com/acm/contest/95323/G</a></p>
+<p>知识点:贪心、排序</p>
+<p>难度: 932</p>
+<p>同样是签到题,思路也很好想,我们需要找出TA不变的是什么.是sum!只需要动态开2个数组,一个输入(要排序),一个校对.<br>比较2个数组相同位置元素的差的绝对值,由于统计2次,所以得除以2.<br>注意范围:int会爆得开long long</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+void func()
+&#123;
+int n;
+cin &gt;&gt; n;
+int* arr = (int*)malloc(n*sizeof(int));
+int* arr1 = (int*)malloc(n * sizeof(int));
+ll sum1 = 0;
+ll sum2 = 0;
+for (int i = 0; i &lt; n; i++)
+&#123;
+    cin &gt;&gt; arr[i];
+
+    sum1 += arr[i];
+&#125;
+sort(arr, arr + n);
+
+for (int i = 0; i &lt; n; i++)
+&#123;
+    sum2 += i+1;
+    arr1[i] = i+1;
+&#125;
+int ans = 0;
+
+for (int i = 0; i &lt; n; i++)
+&#123;
+    
+     if (sum1 != sum2)
+    &#123;
+        printf(&quot;-1\n&quot;);
+        ans = 1;
+        break;
+    &#125;
+&#125;
+ll sum = 0;
+if (ans == 0)
+&#123;
+    for (int i = 0; i &lt; n; i++)
+    &#123;
+        if (arr1[i] != arr[i])
+        &#123;
+            sum += fabs(arr1[i] - arr[i]);
+            
+        &#125;
+    &#125;
+    sum = sum / 2;
+    printf(&quot;%lld&quot;, sum);
+&#125;
+free(arr);
+free(arr1);
+&#125;
+int main() 
+&#123;
+func();
+&#125;
+</code></pre>
+<hr>
+<h1 id="H-井然有序之窗"><a href="#H-井然有序之窗" class="headerlink" title="H 井然有序之窗"></a>H 井然有序之窗</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/H">https://ac.nowcoder.com/acm/contest/95323/H</a></p>
+<p>知识点:贪心,优先队列</p>
+<p>难度: 1603</p>
+<p>上难度了,不会做,就算在补题时写出来依旧困难.关键是怎么最优化排列,这么想?<br>拿样例来说:<br>4<br>3  4<br>1  4<br>2  3<br>1  3<br>这样看,毫无章法,给TA排序下:<br>4<br>1  3<br>1  4<br>2  3<br>3  4<br>这样看是不是舒服多了?我们排列两次,先按左端点升序,再按右升序,实际上本题的核心就是按左端点且区间min放这n个数.<br>考虑数据进出,优先队列.</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+struct range
+&#123; 
+int l, r, pos;
+bool operator&lt;(const range&amp; other)const
+&#123;
+    return (l &lt; other.l) || (l == other.l &amp;&amp; r &lt; other.r);
+&#125;//重载,先基于左端点排序,相等则基于右端点排序.
+
+&#125;;
+struct CompareR
+&#123;
+bool operator()(const range&amp; a, const range&amp; b)
+&#123;
+    return a.r &gt; b.r;
+&#125;//比较函数对象,用于比较两个range右端点.
+&#125;;
+int main() 
+&#123;
+int n;
+cin &gt;&gt; n;
+vector&lt;range&gt; ranges;//存在向量ranges中
+for (int i = 0; i &lt; n; i++)
+&#123;
+    int l, r;
+    cin &gt;&gt; l &gt;&gt; r;
+    ranges.push_back(&#123; l,r,i &#125;);
+&#125;//存在向量ranges中
+sort(ranges.begin(), ranges.end());//先排序
+priority_queue&lt;range, vector&lt;range&gt;, CompareR&gt;pq;
+vector&lt;int&gt;res(n);
+int index = 0;//定义了一个最大堆pq,使用CompareR作为比较标准.还定义了一个结果向量res,用于存储每个区间的代表点,以及一个索引index用于遍历ranges.
+for (int k = 1; k &lt;= n; k++)
+&#123;
+    while (index &lt; n &amp;&amp; ranges[index].l &lt;= k)
+    &#123;
+        pq.push(ranges[index++]);
+    &#125;
+    while (pq.empty() == 0 &amp;&amp; pq.top().r &lt; k) pq.pop();
+    if (pq.empty())
+    &#123;
+        cout &lt;&lt; -1;
+        return 0;
+    &#125;
+    auto [l, r, pos] = pq.top();
+    pq.pop();
+    res[pos] = k;
+&#125;
+//这个循环遍历从1到n的每个点k,尝试为每个区间找到一个代表点.
+//它首先将所有左端点小于等于k的区间加入堆中.然后移除所有右端点小于k的区间(因为它们不包含k).
+//如果堆为空,意味着没有区间包含当前的k,程序输出-1并结束.否则,取出堆顶元素(即右端点最大的区间),将k作为该区间的代表点存储在res中.
+for (int x : res) cout &lt;&lt; x &lt;&lt; &quot; &quot;;
+
+//最后遍历结果向量res,输出每个区间的代表点
+//等价于:
+// for (size_t i = 0; i &lt; res.size(); ++i)
+// &#123;
+//   int x = res[i];
+//   cout &lt;&lt; x &lt;&lt; &quot; &quot;;
+// &#125;
+return 0;
+&#125;
+</code></pre>
+<hr>
+<h1 id="E-双生双宿之错"><a href="#E-双生双宿之错" class="headerlink" title="E 双生双宿之错"></a>E 双生双宿之错</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/E">https://ac.nowcoder.com/acm/contest/95323/E</a></p>
+<p>知识点:排序，中位数定理</p>
+<p>难度: 1782</p>
+<p>知道或者能推出结论就不难,本质上是数学的一条线段上一个动点到多定点的距离和最小,只不过此题先二分,分别求其到中位数的距离.<br>但要考虑两段中位数相等时的问题,要分两种情况:<br>1.前面一半集体到中位数-1的距离,后一半到中位数的距离<br>2.前一半集体到中位数的距离,后一半到中位数-1的距离<br>二者要取min</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+ll calculate_cost(const vector&lt;int&gt;&amp; arr, int start, int end, int target)
+&#123;
+ll cost = 0;
+for (int i = start; i &lt; end; i++)
+&#123;
+    cost += fabs(arr[i]-target);
+&#125;
+return cost;
+&#125;
+void func()
+&#123;
+int T;
+cin &gt;&gt; T;
+for (int i = 0; i &lt; T; i++)
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt;arr(n);
+    for (int i = 0; i &lt; n; i++)
+    &#123;
+        cin &gt;&gt; arr[i];
+    &#125;
+    sort(arr.begin(),arr.end());
+    int half = n / 2;
+    int a, b;
+    if (half % 2 == 0)
+    &#123;
+        a = (arr[half / 2 - 1] + arr[half / 2]) / 2;
+    &#125;
+    else
+    &#123;
+        a = arr[half / 2];
+    &#125;
+
+    if (half % 2 == 0)
+    &#123;
+        b = (arr[half+half / 2 - 1] + arr[half+half / 2]) / 2;
+    &#125;
+    else
+    &#123;
+        b = arr[half+half / 2];
+    &#125;
+    if (a != b)
+    &#123;
+        ll cost = calculate_cost(arr, 0, half, a) + calculate_cost(arr, half, n, b);
+        cout &lt;&lt; cost &lt;&lt; &quot;\n&quot;;
+    &#125;
+    else
+    &#123;
+        int option1_x = a - 1;
+        int option1_y = a;
+        ll cost1 = calculate_cost(arr, 0, half, option1_x) + calculate_cost(arr, half, n, option1_y);
+        int option2_x = a;
+        int option2_y = a + 1;
+        ll cost2 = calculate_cost(arr, 0, half, option2_x) + calculate_cost(arr, half, n, option2_y);
+        cout &lt;&lt; min(cost1, cost2) &lt;&lt; &quot;\n&quot;;
+    &#125;
+  &#125;
+&#125;
+int main() 
+&#123;
+func();
+return 0;
+&#125;
+</code></pre>
+<hr>
+<h1 id="M-数值膨胀之美"><a href="#M-数值膨胀之美" class="headerlink" title="M 数值膨胀之美"></a>M 数值膨胀之美</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/M">https://ac.nowcoder.com/acm/contest/95323/M</a></p>
+<p>知识点: 贪心,模拟,线段树,ST表.</p>
+<p>难度: 1274</p>
+<p>数据弱了,可以混过去,但现在不行(沮丧).出的非常好,成功使我被击败…<br>官方思路:<br>如果区间只有一个数,一定会选择min * 2, min * 2之后区间极差有哪些可能?<br>1.Max-2*Min(2Min还是最小值)<br>2.2Min-次小值(2Min比Max大)<br>3.Max-次小值(2Min比Max小,比次小值大)</p>
+<p>已知:极差唯一有可能减小的,就是Min*2但怎么维护 *2区间的mzx,min和剩下的max,min?<br>ST表,线段树.<br>可发现,变化完次小值成了有决定的值,那么就又有方案给次小值乘2.<br>次小值要乘2,那就是最小值到次小值的区间一起乘2.<br>这个区间乘2以后,最小值可能会变成第三最小值,也可能是最小值乘2,最大值有可能是原来的最大值,也有可能是这个区间的最大值乘2</p>
+<p>所以,极差是”乘2的区间的最大值和剩下的最大值取最大”–”乘2的区间的最小值与剩下的最小值取最小”</p>
+<p>剩下的区间的max–就用原数组的max,如果TA被乘2了,那么乘2区间的max才是答案,剩下的区间真的max也不管用.<br>剩下的区间min:<br>1.先结构体排序,指针指向还没乘2的最小数–如果指向的数在乘2的区间中,指针++<br>2.开个容器记录还没被乘2的数–求最小值,删除指定的数,有重复值–multiset</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+
+pair&lt;int, int&gt;a[150000];
+int b[150000];
+
+void func()
+&#123;
+int n;
+cin &gt;&gt; n;
+for (int i = 0; i &lt; n; i++)
+&#123;
+    cin &gt;&gt; a[i].first;
+    a[i].second = i;
+    b[i] = a[i].first;
+&#125;
+a[n].first = 2e9;
+sort(a, a + n);
+int l = a[0].second, r = a[0].second;
+int ma = max(a[0].first * 2, a[n - 1].first);
+int res = ma - min(a[0].first * 2, a[1].first);
+// 遍历处理每个元素
+for(i=1; i&lt;n; i++)&#123;
+    // 扩展左边界到包含当前元素的原始位置
+    while(a[i].second &lt; l) &#123;
+        l--;
+        ma = max(ma, b[l]*2); // 更新最大值（可能与区间代价相关）
+    &#125;
+    // 扩展右边界到包含当前元素的原始位置
+    while(a[i].second &gt; r) &#123;
+        r++;
+        ma = max(ma, b[r]*2); // 更新最大值
+    &#125;
+    // 更新最优解：当前最大值 - 下一元素的值的两倍（或哨兵值）
+    res = min(res, ma - min(a[0].first*2, a[i+1].first));
+&#125;
+cout &lt;&lt; res;  
+&#125;
+int main() 
+&#123;
+func();
+
+return 0;
+&#125;
+</code></pre>
+<hr>
+<h1 id="J-硝基甲苯之袭"><a href="#J-硝基甲苯之袭" class="headerlink" title="J 硝基甲苯之袭"></a>J 硝基甲苯之袭</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/J">https://ac.nowcoder.com/acm/contest/95323/J</a></p>
+<p>知识点:位运算,数论</p>
+<p>难度:1567</p>
+<p>在解决此题之前我们先了解一个性质:<br>a ^ b &#x3D; c &lt;&#x3D;&gt; a ^ c &#x3D; b<br>那么对于本题:<br>ai^gcd&#x3D;aj<br>设gcd是x<br>cnt[ai]*cnt[aj]是满足ai ^ x&#x3D;aj的对数<br>但是x可未必是ai,aj的gcd,需要验证,是ans就加,不是continue<br>x枚举 2-sqrt(a) ai%x&#x3D;&#x3D;0<br>求ai ^ x &#x3D; d -&gt;cnt[d]</p>
+<hr>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main()
+&#123;
+const int N = 2e5 + 1;
+int n;
+cin &gt;&gt; n;
+vector&lt;int&gt; a(N * 2 + 1);//开一个比较大的数组
+for(int i = 1; i &lt;= n; i++)
+&#123;
+    int x;
+    cin &gt;&gt; x;
+    a[x]++;//hash计数
+&#125;
+auto ans = 0ll;//ans用于累加满足条件的整数对的总次数.
+auto get = [&amp;](int x, int y)//get函数接收参数x和y,计算y += x得到k = x + y,然后检查x ^ k是否等于gcd(x,k).若成立,则累加a[x] * a[k]到ans.
+&#123;
+    y += x;
+    if((x ^ y) == gcd(x, y)) ans += 1ll * a[x] * a[y];
+&#125;;
+for(int i = 2; i &lt;= N; i += 2)&#123;
+    for(int j = 1; j * j &lt;= i; j++)&#123;
+        if(i % j) continue;
+        get(i, j);
+        if(j * j != i) get(i, i / j);//将一个定为偶数,另一个在此操作变为奇数,可枚举出所有情况.
+    &#125;遍历偶数 i,枚举其因数 j.对每个因数 j,调用 get(i,j) 和 get(i, i/j).
+&#125;
+cout &lt;&lt; ans &lt;&lt; endl;
+&#125;
+</code></pre>
+<hr>
+<h1 id="C-兢兢业业之移"><a href="#C-兢兢业业之移" class="headerlink" title="C 兢兢业业之移"></a>C 兢兢业业之移</h1><p>链接: <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/95323/C">https://ac.nowcoder.com/acm/contest/95323/C</a></p>
+<p>知识点: 模拟&#x2F;最短路,超大模拟.</p>
+<p>难度: 1952</p>
+<p>考查代码量</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+
+int main() 
+&#123;
+int T = 1;
+cin &gt;&gt; T; // 输入测试用例数量
+while (T--) 
+&#123;
+    int n;
+    cin &gt;&gt; n; // 输入网格大小n
+    // 初始化网格，周围填充&#39;1&#39;作为边界
+    std::vector&lt;std::string&gt; s(n + 2, std::string(n + 2, &#39;1&#39;));
+    for (int i = 1; i &lt;= n; i++) 
+    &#123;
+        cin &gt;&gt; s[i]; // 输入每行原始数据
+        s[i] = &quot;1&quot; + s[i] + &quot;1&quot;; // 左右添加边界&#39;1&#39;
+    &#125;
+    vector&lt;vector&lt;int&gt;&gt; ans; // 存储操作记录
+    
+    // 定义移动函数
+    auto go = [&amp;](int x, int y, char c) 
+    &#123;
+        int dx = x, dy = y; // 计算移动后的坐标
+        dx -= (c == &#39;U&#39;);   // 向上移动行号-1
+        dx += (c == &#39;D&#39;);   // 向下移动行号+1
+        dy -= (c == &#39;L&#39;);   // 向左移动列号-1
+        dy += (c == &#39;R&#39;);   // 向右移动列号+1
+        swap(s[x][y], s[dx][dy]); // 交换元素
+        ans.push_back(&#123;x, y, dx, dy&#125;); // 记录操作
+    &#125;;
+
+    // 第一阶段：垂直方向整理（向上推）
+    for (int i = 1; i &lt;= n; i++) 
+    &#123;
+        for (int j = 1; j &lt;= n; j++) 
+        &#123;
+            // 从当前位置向上遍历
+            for (int k = i; k &gt;= 1; k--) 
+            &#123;
+                if (s[k][j] == &#39;1&#39; &amp;&amp; s[k-1][j] == &#39;0&#39;) 
+                &#123;
+                    go(k, j, &#39;U&#39;); // 将&#39;1&#39;向上移动到&#39;0&#39;的位置
+                &#125; else break; // 遇到障碍停止
+            &#125;
+        &#125;
+    &#125;
+
+    // 第二阶段：水平方向整理（向左推）
+    for (int i = 1; i &lt;= n; i++) 
+    &#123;
+        for (int j = 1; j &lt;= n; j++) 
+        &#123;
+            // 从当前位置向左遍历
+            for (int k = j; k &gt;= 1; k--) 
+            &#123;
+                if (s[i][k] == &#39;1&#39; &amp;&amp; s[i][k-1] == &#39;0&#39;) 
+                &#123;
+                    go(i, k, &#39;L&#39;); // 将&#39;1&#39;向左移动到&#39;0&#39;的位置
+                &#125; else break;
+            &#125;
+        &#125;
+    &#125;
+
+    // 第三阶段：处理右上区域
+    for (int i = n/2; i &gt;= 1; i--)
+    &#123; // 从中间行向上
+        for (int j = n; j &gt; n/2; j--) 
+        &#123; // 右侧列向左
+            if (s[i][j] == &#39;0&#39;) continue; // 跳过空位
+            // 在左上区域寻找空位
+            int x = 0, y = 0;
+            for (int k = 1; k &lt;= n/2; k++) 
+            &#123;
+                for (int l = 1; l &lt;= n/2; l++) 
+                &#123;
+                    if (s[k][l] == &#39;1&#39;) continue;
+                    x = k; y = l;
+                    break;
+                &#125;
+                if (x) break;
+            &#125;
+            // 垂直向下移动
+            for (int k = i; k &lt; x; k++) go(k, j, &#39;D&#39;);
+            // 水平向左移动
+            for (int k = j; k &gt; y; k--) go(x, k, &#39;L&#39;);
+        &#125;
+    &#125;
+
+    // 第四阶段：处理右下区域
+    for (int i = n; i &gt; n/2; i--)
+    &#123; // 从底部行向上
+        for (int j = n/2; j &gt;= 1; j--) 
+        &#123; // 中间列向左
+            if (s[i][j] == &#39;0&#39;) continue;
+            // 在左上区域寻找空位
+            int x = 0, y = 0;
+            for (int k = 1; k &lt;= n/2; k++) 
+            &#123;
+                for (int l = 1; l &lt;= n/2; l++) 
+                &#123;
+                    if (s[k][l] == &#39;1&#39;) continue;
+                    x = k; y = l;
+                    break;
+                &#125;
+                if (x) break;
+            &#125;
+            // 水平向右移动（实际是向左填充）
+            for (int k = j; k &lt; y; k++) go(i, k, &#39;R&#39;);
+            // 垂直向上移动
+            for (int k = i; k &gt; x; k--) go(k, y, &#39;U&#39;);
+        &#125;
+    &#125;
+
+    // 输出操作步骤
+    cout &lt;&lt; ans.size() &lt;&lt; endl;
+    for (auto&amp; i : ans)
+    &#123;
+        for (auto&amp; j : i) cout &lt;&lt; j &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; endl;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<hr>
+<h1 id="F-双生双宿之探"><a href="#F-双生双宿之探" class="headerlink" title="F.双生双宿之探"></a>F.双生双宿之探</h1><p>知识点: 双指针,前缀和,逻辑,线段树,ST表 </p>
+<p>难度: 2213</p>
+<p>难题,首先考虑暴力n^3肯定超时.<br>稍微优化一下,l到r中数的个数＞2了,r就不要往后走了</p>
+<p>优化的基本思路:1.&lt;循环优化&gt;(1)变成区间端点 (2)拆成多个小区间 &#x2F;&#x2F;一重一重去看能丢掉哪个不(l,r同理,得去掉某一个)<br>               2.&lt;计数优化&gt;前缀和</p>
+<p>先把每一个符合条件的LR最大范围求出来(知道最左边在哪最右边在哪),然后在这个区间里去找符合条件的区间有多少对</p>
+<hr>
+<pre><code>#include &lt;bits/stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+void func() &#123;
+int T;
+cin &gt;&gt; T;
+for(int i=0; i&lt;T; i++) &#123;  // 处理每个测试用例
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;int&gt; a(n + 1);  // 数组从索引1开始
+    for (int i = 1; i &lt;= n; i++) &#123;
+        cin &gt;&gt; a[i];
+    &#125;
+    vector&lt;int&gt; f(n + 1);  // 前缀和数组
+    ll ans = 0;
+            for (int i = 1; i &lt;= n; i++) 
+            &#123;
+        set&lt;int&gt; st;        // 记录当前窗口内的不同元素
+        map&lt;int, int&gt; mp;   // 统计前缀和出现次数
+        mp[0]++;            // 初始前缀和为0的情况
+        f[i-1] = 0;         // 初始化前缀和
+                for (int j = i; j &lt;= n; j++) 
+                &#123;
+            st.insert(a[j]);
+            if (st.size() &gt; 2) 
+            &#123;  // 元素超过2种，调整窗口
+                i = j;            
+                st.clear();
+               
+                for (; i &gt;= 1; i--)
+                &#123;
+                    st.insert(a[i]);
+                    if (st.size() &gt; 2) break;
+                &#125;
+                break;  // 退出内层循环
+            &#125;
+            // 更新前缀和
+            f[j] = f[j-1] + (a[j] == a[i] ? 1 : -1);
+            ans += mp[f[j]];  // 累加当前前缀和的出现次数
+            mp[f[j]]++;       // 记录当前前缀和
+            if (j == n) i = n; // 强制退出外层循环
+        &#125;
+    &#125;
+    cout &lt;&lt; ans &lt;&lt; endl;
+  &#125;
+&#125;
+int main()
+&#123;
+func();
+return 0;
+&#125;
+</code></pre>
+<hr>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ETalien</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/01/21/%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51/">http://example.com/2025/01/21/%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">一位元宇宙爱好者的随笔</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ACM%E6%96%B0%E6%89%8B%E6%9D%91/">ACM新手村</a></div><div class="post-share"><div class="social-share" data-image="/image/yuanshen39.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="prev-post pull-left" href="/2025/02/07/C++%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E6%80%BB%E7%BB%93/" title="C++语法注意总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen186.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++语法注意总结</div></div></a><a class="next-post pull-right" href="/2024/11/09/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93--%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/" title="算法技巧1(个人总结--持续更新中)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen39.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法技巧1(个人总结--持续更新中)</div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a href="/2025/02/07/C++%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E6%80%BB%E7%BB%93/" title="C++语法注意总结"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen186.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-07</div><div class="title">C++语法注意总结</div></div></a><a href="/2024/10/06/%E8%A1%A5%E9%A2%98%E7%B3%BB%E5%88%97/" title="牛客周赛round64"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen39.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-06</div><div class="title">牛客周赛round64</div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/image/yuanshen103.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">ETalien</div><div class="author-info-description">表世界的隐居者，里世界的幻想者，欢迎各位来到幻想乡！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://ETalien404.github.io"><i class="fab fa-github"></i><span>幻想乡!启动!</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到幻想乡!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-%E8%8C%95%E8%8C%95%E5%AD%91%E7%AB%8B%E4%B9%8B%E5%BD%B1"><span class="toc-text">A 茕茕孑立之影</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-%E4%B8%80%E6%B0%94%E8%B4%AF%E9%80%9A%E4%B9%8B%E5%88%83"><span class="toc-text">B 一气贯通之刃</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#D-%E5%8F%8C%E7%94%9F%E5%8F%8C%E5%AE%BF%E4%B9%8B%E5%86%B3"><span class="toc-text">D 双生双宿之决</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#G-%E4%BA%95%E7%84%B6%E6%9C%89%E5%BA%8F%E4%B9%8B%E8%A1%A1"><span class="toc-text">G 井然有序之衡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#H-%E4%BA%95%E7%84%B6%E6%9C%89%E5%BA%8F%E4%B9%8B%E7%AA%97"><span class="toc-text">H 井然有序之窗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#E-%E5%8F%8C%E7%94%9F%E5%8F%8C%E5%AE%BF%E4%B9%8B%E9%94%99"><span class="toc-text">E 双生双宿之错</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#M-%E6%95%B0%E5%80%BC%E8%86%A8%E8%83%80%E4%B9%8B%E7%BE%8E"><span class="toc-text">M 数值膨胀之美</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#J-%E7%A1%9D%E5%9F%BA%E7%94%B2%E8%8B%AF%E4%B9%8B%E8%A2%AD"><span class="toc-text">J 硝基甲苯之袭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E5%85%A2%E5%85%A2%E4%B8%9A%E4%B8%9A%E4%B9%8B%E7%A7%BB"><span class="toc-text">C 兢兢业业之移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#F-%E5%8F%8C%E7%94%9F%E5%8F%8C%E5%AE%BF%E4%B9%8B%E6%8E%A2"><span class="toc-text">F.双生双宿之探</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By ETalien</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>(() => {
+  const panguFn = () => {
+    if (typeof pangu === 'object') pangu.autoSpacingPage()
+    else {
+      btf.getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+        .then(() => {
+          pangu.autoSpacingPage()
+        })
+    }
+  }
+
+  const panguInit = () => {
+    if (false){
+      GLOBAL_CONFIG_SITE.isPost && panguFn()
+    } else {
+      panguFn()
+    }
+  }
+
+  btf.addGlobalFn('pjaxComplete', panguInit, 'pangu')
+  document.addEventListener('DOMContentLoaded', panguInit)
+})()</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="30" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tsumiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>

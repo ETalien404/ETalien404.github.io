@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>CTF个人重点</title>
+      <link href="/2025/02/12/CTF%E7%9F%A5%E8%AF%86%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+      <url>/2025/02/12/CTF%E7%9F%A5%E8%AF%86%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CTF中用到的linux命令-补充中"><a href="#CTF中用到的linux命令-补充中" class="headerlink" title="CTF中用到的linux命令(补充中)"></a>CTF中用到的linux命令(补充中)</h1><p>checkesc 检测文件是否开启了什么保护<br>chmod 777 +文件名 给文件可读可写可执行权限</p><h1 id="汇编语言的基础-补充中"><a href="#汇编语言的基础-补充中" class="headerlink" title="汇编语言的基础(补充中)"></a>汇编语言的基础(补充中)</h1><p>mov rbp(目的操作数),rsp(原操作数)<br>将rsp寄存器的值赋值给rbp<br>简单来说就是rnp&#x3D;rsp;</p><p>add加,sub减,xor异或,and&amp;与操作,call直接调函数.</p><p>lea 计算<br>eg:<br>lea rax,[rbp-0x18] &lt;&#x3D;&#x3D;&gt; rax&#x3D;rbb-0x18;<br>(xor eax ,eax :eax&#x3D;0;)</p><p>jcc系列–满足一定条件跳转</p><p>cmp a1,0x61 : a1-0x61给下面的Jcc系列的语句作为跳转判断的条件.<br>与sub a1,0x61区别: a1&#x3D;a1-0x61而前者没有赋值直接比较</p><p>test 与上面同理,比如rax&amp;rax&#x3D;1一样只不过没有赋值</p><h1 id="GDB-补充中"><a href="#GDB-补充中" class="headerlink" title="GDB(补充中)"></a>GDB(补充中)</h1><p>gdb .&#x2F;文件名–启动!<br>run–我觉得一般用不到,这相当于跑了一遍全过程<br>start–程序启动!<br>ni–单步步进,用来分析寄存器的变化<br>finish 如果进入到某个函数里,步过这个函数</p><p>b *地址设置断点<br>enable&#x2F;disable 启动&#x2F;禁用断点<br>c 执行到断点所在的地址,指向的那一行没有被执行</p><p>x&#x2F;数字+.. +$…  系列<br>x&#x2F;i以汇编的形式实现(x&#x2F;20i $rip)<br>x&#x2F;g以8个字节的形式呈现(x&#x2F;20g $rbp)–十六进制<br>x&#x2F;w以4个字节的形式呈现(x&#x2F;20w $rbp)–十六进制<br>x&#x2F;bd以十进制形式呈现(x&#x2F;20bd $rbp)<br>x&#x2F;s以字符形式呈现(x&#x2F;20s $rbp)</p><p>set 系列(赋值)</p><p>set $rbp&#x3D;10可以给寄存器赋值</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hacker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF新手村 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++语法注意总结</title>
+      <link href="/2025/02/07/C++%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E6%80%BB%E7%BB%93/"/>
+      <url>/2025/02/07/C++%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><p>我们常常遇到读取多行字符串,但这时候就有问题了.</p><hr><pre><code>举个例子:#include &lt;iostream&gt;int main&#123;    int a;    int name[20];    std::cin&gt;&gt;a;    //解决std::cin.get();把回车读入    std::cin.getline(name,20);    //这就出现一个严重的问题,cin是到换行符,制表符,回车停下.    //给变量a赋值后回车有下一行的cin.getline读入,约等于不执行.&#125;</code></pre><hr><h1 id="指针和自由存储空间"><a href="#指针和自由存储空间" class="headerlink" title="指针和自由存储空间"></a>指针和自由存储空间</h1><p>要探究指针的本质,先看声明和初始化</p><hr><pre><code>eg:int*p;我们通常是(int*)p这么看的为什么?为什么不可以int(*p)这样看?我们说p 指向int 类型,我们还说p的类型是指向int的指针,或int*.可以这样说,p是指针(地址),而*p是int,而不是指针到后面,分为变量域与指针域所以上面的二者意义分别为:1.这强调*p是一个int类型的值2.这强调的是:int*是一种类型—指向int的指针.在哪里添加空格对于编译器来说没有任何区别.</code></pre><hr><p>这里有个特别注意的点:</p><hr><pre><code>eg:int a=23;int *pe=&amp;a;其实,a与*pe     &amp;a与pe等价想一想*,&amp;这2个符号的含义还有:new&lt;--&gt;delete加上指向内存块对应的指针//不建议使用malloc&lt;--&gt;free结构体中的指针eg:struct things&#123;    int good;    int bad;&#125;;things p1=&#123;3,4&#125;;//这里是一个结构(things*)p2=&amp;p1;//注意,我说的是p2这里是指向结构体的一个指针很容易混这里:是前面举例的第二种类型比如:3&lt;--&gt;p1.good;     4&lt;--&gt;p1.bad如果要访问它们就要通过*得到*p2就是结构体p1本身再访问.(*p1).good&lt;==&gt;p1-&gt;good</code></pre><hr><h1 id="指针和const"><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h1><p>将const用于指针有一些很微妙的地方(指针看起来总是很微妙),我们来详细探讨一下.可以用两种不<br>同的方式将 const 关键字用于指针.第一种方法是让指针指向一个常量对象,这样可以防止使用该指<br>针来修改所指向的值,第二种方法是将指针本身声明为常量,这样可以防止改变指针指向的位置.</p><hr><pre><code>int age=39;const int*pt=&amp;age;pt指向一个const int(39),不能用pt来修改.换句话来说,*pt的值为const,不能被修改</code></pre><hr><h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><p>小点:<br>++,–运算符运用<br>可以表现为:</p><hr><pre><code>a=20;   b=20;a++=20; ++b=21;a=21;   b=21;粗略地讲,a++意味着使用a的当前值计算表达式,然后将a的值加1;而++b的意思是先将b的值加1,然后使用新的值来计算表达式.</code></pre><hr><p>特别的,while还可以用作单片机开发中的延时函数</p><hr><pre><code>void time()&#123;    long wait=0;    while(wait&lt;10000)    &#123;    wait++;    &#125;&#125;</code></pre><hr><p>重点:基于范围的for循环(C++11)<br>基于范围(range-based)的 for循环.这简化了一种常见的循环任务:对数组<br>(或容器类,如vector和array)的每个元素执行相同的操作,如下例所示:</p><hr><pre><code>double prices[5]=&#123;1,2,3,4,5&#125;;for(double x:prices)    cout&lt;&lt;x&lt;&lt;std::endl;其中，x最初表示数组prices 的第一个元素.显示第一个元素后,不断执行循环,而x依次表示数组的其他元素.因此,上述代码显示全部5个元素,每个元素占据一行.总之,该循环显示数组中的每个值.</code></pre><hr><h1 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h1><p>几个易混淆的运算符<br>逻辑NOT运算符–!</p><hr><pre><code>eg1:int a=10;if(!a)&#123;a--;&#125;else if(a)&#123;a++;&#125;这两个是不一样的,if类的语句判断括号对应语句内的是否为true,(a)是否为不为0,!反过来为0这在while(!a)中常见.另外要注意优先级的问题:!(x&gt;5)和!x&gt;5不一样后者通常不合法</code></pre><hr><p>(?:)–三目运算符<br>比如: 5&gt;3?10:12 前者为true,后者取前,反之取后</p><hr><pre><code>eg2:int c=a&gt;b?a:b//int c=a; if(a&gt;b) else c=b;</code></pre><hr><h1 id="函数与结构"><a href="#函数与结构" class="headerlink" title="函数与结构"></a>函数与结构</h1><p>简单的举例:</p><hr><pre><code>struct tra_time&#123;    int hours;    int mins;&#125;const int Min_per_hr=60;tra_time sum(tra_time t1,tra_time t2)&#123;    tra_time total;    total.mins=(t1.mins+t2.mins)%Min_per_hr;    total.hours=t1.hours+t2.hours+(t1.mins+t2.mins)/Min_per_hr;    return total;与int等类型的函数返回值一样&#125;void show_time(travel_time t)&#123;    using namespace std;    cout&lt;&lt;t.hours;    cout&lt;&lt;t.mins;&#125;</code></pre><hr><p>传递结构的地址(指针结合)</p><hr><pre><code>原:void show_polar(polar dapos)&#123;    cout&lt;&lt;dapos.distance;    cout&lt;&lt;dapos.angle*Rad;&#125;假设要传递结构的地址而不是整个结构以节省时间和空间,则需要重新编写前面的函数,使用指向结构的指针.首先来看一看如何重新编写show_polar( )函数.需要修改三个地方: 调用函数时,将结构的地址(&amp;pplace)而不是结构本身(pplace)传递给它: 将形参声明为指向polar的指针,即polar *类型.由于函数不应该修改结构,因此使用了const修饰符: 由于形参是指针而不是结构,因此应间接成员运算符(-&gt;),而不是成员运算符(句点). 完成上述修改后,该函数如下所示:   void show_polar(const polar*pda)&#123;    cout&lt;&lt;pad-&gt;distance;    cout&lt;&lt;pad-&gt;angle*Rad;&#125;</code></pre><hr><p>函数与指针</p><p>首先通过一个例子来阐释这一过程.假设要设计一个名为estimate( )的函数,估算编写指定行数的代码<br>所需的时间,并且希望不同的程序员都将使用该函数.对于所有的用户来说,estimate( )中一部分代码都是<br>相同的,但该函数允许每个程序员提供自己的算法来估算时间.为实现这种目标,采用的机制是,将程序<br>员要使用的算法函数的地址传递给estimate( ).为此,必须能够完成下面的工作:</p><p>获取函数的地址;<br>声明一个函数指针;<br>使用函数指针来调用函数.</p><p>1.获取函数的地址<br>获取函数的地址很简单:只要使用函数名(后面不跟参数)即可.也就是说,如果think( )是一个函数,<br>则 think 就是该函数的地址.要将函数作为参数进行传递,必须传递函数名.一定要区分传递的是函数的<br>地址还是函数的返回值:</p><hr><pre><code>process(think);process(think());</code></pre><hr><p>process( )调用使得 process( )函数能够在其内部调用think( )函数.thought( )调用首先调用think( )函数，<br>然后将think( )的返回值传递给thought( )函数. </p><p>2.声明函数指针<br>声明指向某种数据类型的指针时,必须指定指针指向的类型.同样,声明指向函数的指针时,也必须<br>指定指针指向的函数类型.这意味着声明应指定函数的返回类型以及函数的特征标(参数列表).也就是说,<br>声明应像函数原型那样指出有关函数的信息.<br>举个例子:</p><hr><pre><code>函数原型:double pam(int)指针声明:double (*pf)(int);这与pam( )声明类似,这是将pam替换为了(*pf).由于pam是函数,因此(*pf)也是函数.而如果(*pf)是函数，则pf就是函数指针.提示:通常要声明指向特定类型的函数的指针,可以首先编写这种函数的原型,然后用(*pf)替换函数名.这样pf就是这类函数的指针.为提供正确的运算符优先级,必须在声明中使用括号将*pf括起.括号的优先级比*运算符高,因此*pf(int)意味着pf( )是一个返回指针的函数,而(*pf)(int)意味着pf是一个指向函数的指针:double (*pf)(int);pf 是一个指针,指向一个函数,该函数接受一个 int 类型的参数,并返回一个 double 类型的值.括号的使用 (*pf) 表明 * 作用于 pf,因此 pf 是一个指针,而不是函数返回指针的函数.double *pf(int);pf 是函数的名称,该函数接受一个 int 类型的参数.这里的 * 表示函数返回的是一个指针,而不是 pf 本身是一个指针.</code></pre><hr><p>3.使用指针来调用函数<br>现在进入最后一步,即使用指针来调用被指向的函数.线索来自指针声明。前面讲过,(*pf)扮演的<br>角色与函数名相同,因此使用(*pf)时,只需将它看作函数名即可</p><p>引用变量:<br>C和C++ 使用&amp;符号来指示变量的地址.C++给&amp;符号赋予了另一个含义,将其用来声明引<br>用.例如,要将rodents作为rats变量的别名,可以这样做:</p><hr><pre><code>int rats;int &amp; rodents=rats;</code></pre><hr><p>其中,&amp;不是地址运算符,而是类型标识符的一部分.就像声明中的char*指的是指向char的指针一样,<br>int &amp;指的是指向int的引用.上述引用声明允许将rats和rodents互换—它们指向相同的值和内存单元.<br>本质上是变量只有一个,但名称却有多个.</p><p>引用的属性和特别之处<br>在函数中,引用的参数在函数运行的过程中本身的值会被修改(按引用传递)<br>举例:</p><hr><pre><code>int func1(int x)&#123;  x*=x;  return x;//传入的参数x并不会被改变.&#125;int func2(int &amp;x)&#123;    x*=x;    return x;//按引用传递,传入的参数本身会被修改&#125;</code></pre><hr><p>临时变量,引用参数和const<br>如果实参与引用参数不匹配, C++ 将生成临时变量.当前仅当参数为const 引用时,C++ 才允许这<br>样做,但以前不是这样.下面来看看何种情况下,C++将生成临时变量,以及为何对const引用的限制是<br>合理的.<br>首先,什么时候将创建临时变量呢?如果引用参数是const,则编译器将在下面两种情况下生成临时<br>变量:<br>实参的类型正确,但不是左值:<br>实参的类型不正确,但可以转换为正确的类型.<br>左值是什么呢?左值参数是可被引用的数据对象,例如,变量,数组元素,结构成员,引用和解除引<br>用的指针都是左值.非左值包括字面常量(用引号括起的字符串除外,它们由其地址表示)和包含多项的<br>表达式.在C语言中,左值最初指的是可出现在赋值语句左边的实体,但这是引入关键字const之前的情<br>况.现在,常规变量和 const 变量都可视为左值,因为可通过地址访问它们.但常规变量属于可修改的左<br>值,而const变量属于不可修改的左值. </p><p>注意:如果函数调用的参数不是左值或与相应的const 引用参数的类型不匹配,则C++将创建类型正<br>确的匿名变量,将函数调用的参数的值传递给该匿名变量,并让参数来引用该变量.<br>应尽可能使用const 将引用参数声明为常量数据的引用的理由有三个:<br>使用const可以避免无意中修改数据的编程错误<br>使用const使函数能够处理const和非const实参,否则将只能接受非const数据<br>使用const引用使函数能够正确生成并使用临时变量.<br>因此应尽可能将引用形参声明为const</p><p>C++11 新增了另一种引用—右值引用(rvalue reference)这种引用可指向右值,是使用&amp;&amp;声明的:<br>新增右值引用的主要目的是,让库设计人员能够提供有些操作的更有效实现.</p><hr><pre><code>int &amp;&amp; r=std::sqrt(36);std::cout&lt;&lt;r;//6</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++语法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ACM新手村 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>牛客寒假算法基础集训营1</title>
+      <link href="/2025/01/21/%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51/"/>
+      <url>/2025/01/21/%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51/</url>
+      
+        <content type="html"><![CDATA[<p>被暴打,拼尽全力还是没有让ACM大人尽兴…<br>顺开,补题…</p><h1 id="A-茕茕孑立之影"><a href="#A-茕茕孑立之影" class="headerlink" title="A 茕茕孑立之影"></a>A 茕茕孑立之影</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/95323/A">https://ac.nowcoder.com/acm/contest/95323/A</a></p><p>知识点:数学</p><p>难度: 794</p><p>签到题,考虑倍数很容易想到质数,注意范围!10^18.也就是找一个在规定范围内尽可能大的质数.<br>这里我们注意到10000000000000007是一个符合条件的质数.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int T;cin &gt;&gt; T;for (int i = 0; i &lt; T; i++)&#123;    int n;    cin &gt;&gt; n;        int ans = 0;    int* arr = (int*)malloc(n*sizeof(int));    for (int j = 0; j &lt; n; j++)    &#123;        cin &gt;&gt; arr[j];    &#125;    for (int j = 0; j &lt; n; j++)    &#123;        if (arr[j] == 1)        &#123;            printf(&quot;-1\n&quot;);            ans = 1;            break;        &#125;    &#125;    if (ans == 0)    &#123;        ll a = 10000000000000007;        printf(&quot;%lld\n&quot;, a);    &#125;    free(arr);&#125;&#125;int main() &#123;func();&#125;</code></pre><hr><h1 id="B-一气贯通之刃"><a href="#B-一气贯通之刃" class="headerlink" title="B 一气贯通之刃"></a>B 一气贯通之刃</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/B">https://ac.nowcoder.com/acm/contest/95323/B</a></p><p>知识点:树</p><p>难度: 875</p><p>数据结构,算是基础题.给定一棵树,要求一次遍历所有节点.<br>考查map的用法,看样例就可以知道,如果要一次遍历完,只需要找到只出现过一次的节点,当然要排除由多分支产生的一次节点.<br>感觉做复杂了…</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int n;cin &gt;&gt; n;map&lt;int, int&gt;mp;int** arr = (int**)malloc(n * sizeof(int*));//动态创建二维数组for (int i = 0; i &lt; n; i++)&#123;    arr[i] = (int*)malloc(2 * sizeof(int));//将列数定为2&#125;for (int i = 0; i &lt; n-1; i++)&#123;    for (int j = 0; j &lt; 2; j++)    &#123;        cin &gt;&gt; arr[i][j];        mp[arr[i][j]]++;  //hash list    &#125;&#125;int ans = 0;//记录分支数if (mp.size() != n)//判断种类,!=n直接排除&#123;    printf(&quot;-1\n&quot;);&#125;else&#123;    for (auto i = mp.begin(); i != mp.end(); i++) &#123;        if (i-&gt;second == 1)        &#123;            ans++;        &#125;    &#125;    if (ans != 2)//判断是否只有一个分支    &#123;        printf(&quot;-1\n&quot;);    &#125;    else    &#123;        for (auto i = mp.begin(); i != mp.end(); i++) &#123;            if (i-&gt;second == 1)            &#123;                cout &lt;&lt; i-&gt;first &lt;&lt; &quot; &quot;;//按键值对进行输出            &#125;        &#125;    &#125;&#125;for (int i = 0; i &lt; n; i++)&#123;    free(arr[i]);&#125;free(arr);&#125;int main() &#123;func();&#125;</code></pre><hr><h1 id="D-双生双宿之决"><a href="#D-双生双宿之决" class="headerlink" title="D 双生双宿之决"></a>D 双生双宿之决</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/95323/D">https://ac.nowcoder.com/acm/contest/95323/D</a></p><p>知识点:模拟,排序&#x2F;stl</p><p>难度: 621</p><p>签到题,按照题目的要求来就行,可以排序,也可以不排序.<br>限定条件:2种元素,次数相同.</p><hr><pre><code>有排序:#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int T;cin &gt;&gt; T;for (int j = 0; j &lt; T; j++)&#123;    int n;    cin &gt;&gt; n;    int* arr = (int*)malloc(n * sizeof(int));    for (int i = 0; i &lt; n; i++)    &#123;        cin &gt;&gt; arr[i];    &#125;    sort(arr, arr + n);    int ans = 0;    if (arr[n / 2] == arr[n / 2 - 1])    &#123;        ans = 1;    &#125;          if (n % 2 != 0)  &#123;   ans = 1;  &#125;      for (int i = 1; i &lt; n / 2; i++)    &#123;        if (arr[i] != arr[i - 1])        &#123;            ans = 1;            break;        &#125;    &#125;    for (int i = n / 2 + 1; i &lt; n; i++)    &#123;        if (arr[i] != arr[i - 1])        &#123;            ans = 1;            break;        &#125;    &#125;            if (ans == 0)    &#123;        printf(&quot;Yes\n&quot;);    &#125;    else    &#123;        printf(&quot;No\n&quot;);    &#125;    free(arr);&#125;&#125; int main() &#123;func();return 0;&#125;无排序:#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int T;cin &gt;&gt; T;for (int i = 0; i &lt; T; i++)&#123;    int n;    cin &gt;&gt; n;    int ans1 = 0;    int ans2 = 0;    map&lt;int, int&gt;mp;    int* arr = (int*)malloc(n*sizeof(int));    for (int j = 0; j &lt; n; j++)    &#123;        cin &gt;&gt; arr[j];        mp[arr[j]]++;    &#125;    int crr[10] = &#123; 0 &#125;;    int k = 0;    if (mp.size() != 2)    &#123;        printf(&quot;No\n&quot;);    &#125;    else    &#123;        for (map&lt;int, int&gt;::iterator it = mp.begin(); it != mp.end(); it++)        &#123;            crr[k]=it-&gt;second;            k++;        &#125;        if (crr[0] == crr[1])        &#123;            printf(&quot;Yes\n&quot;);        &#125;        else        &#123;            printf(&quot;No\n&quot;);        &#125;            &#125;    free(arr);  &#125;&#125; int main() &#123;func();&#125;</code></pre><hr><h1 id="G-井然有序之衡"><a href="#G-井然有序之衡" class="headerlink" title="G 井然有序之衡"></a>G 井然有序之衡</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/G">https://ac.nowcoder.com/acm/contest/95323/G</a></p><p>知识点:贪心、排序</p><p>难度: 932</p><p>同样是签到题,思路也很好想,我们需要找出TA不变的是什么.是sum!只需要动态开2个数组,一个输入(要排序),一个校对.<br>比较2个数组相同位置元素的差的绝对值,由于统计2次,所以得除以2.<br>注意范围:int会爆得开long long</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int n;cin &gt;&gt; n;int* arr = (int*)malloc(n*sizeof(int));int* arr1 = (int*)malloc(n * sizeof(int));ll sum1 = 0;ll sum2 = 0;for (int i = 0; i &lt; n; i++)&#123;    cin &gt;&gt; arr[i];    sum1 += arr[i];&#125;sort(arr, arr + n);for (int i = 0; i &lt; n; i++)&#123;    sum2 += i+1;    arr1[i] = i+1;&#125;int ans = 0;for (int i = 0; i &lt; n; i++)&#123;         if (sum1 != sum2)    &#123;        printf(&quot;-1\n&quot;);        ans = 1;        break;    &#125;&#125;ll sum = 0;if (ans == 0)&#123;    for (int i = 0; i &lt; n; i++)    &#123;        if (arr1[i] != arr[i])        &#123;            sum += fabs(arr1[i] - arr[i]);                    &#125;    &#125;    sum = sum / 2;    printf(&quot;%lld&quot;, sum);&#125;free(arr);free(arr1);&#125;int main() &#123;func();&#125;</code></pre><hr><h1 id="H-井然有序之窗"><a href="#H-井然有序之窗" class="headerlink" title="H 井然有序之窗"></a>H 井然有序之窗</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/H">https://ac.nowcoder.com/acm/contest/95323/H</a></p><p>知识点:贪心,优先队列</p><p>难度: 1603</p><p>上难度了,不会做,就算在补题时写出来依旧困难.关键是怎么最优化排列,这么想?<br>拿样例来说:<br>4<br>3  4<br>1  4<br>2  3<br>1  3<br>这样看,毫无章法,给TA排序下:<br>4<br>1  3<br>1  4<br>2  3<br>3  4<br>这样看是不是舒服多了?我们排列两次,先按左端点升序,再按右升序,实际上本题的核心就是按左端点且区间min放这n个数.<br>考虑数据进出,优先队列.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;struct range&#123; int l, r, pos;bool operator&lt;(const range&amp; other)const&#123;    return (l &lt; other.l) || (l == other.l &amp;&amp; r &lt; other.r);&#125;//重载,先基于左端点排序,相等则基于右端点排序.&#125;;struct CompareR&#123;bool operator()(const range&amp; a, const range&amp; b)&#123;    return a.r &gt; b.r;&#125;//比较函数对象,用于比较两个range右端点.&#125;;int main() &#123;int n;cin &gt;&gt; n;vector&lt;range&gt; ranges;//存在向量ranges中for (int i = 0; i &lt; n; i++)&#123;    int l, r;    cin &gt;&gt; l &gt;&gt; r;    ranges.push_back(&#123; l,r,i &#125;);&#125;//存在向量ranges中sort(ranges.begin(), ranges.end());//先排序priority_queue&lt;range, vector&lt;range&gt;, CompareR&gt;pq;vector&lt;int&gt;res(n);int index = 0;//定义了一个最大堆pq,使用CompareR作为比较标准.还定义了一个结果向量res,用于存储每个区间的代表点,以及一个索引index用于遍历ranges.for (int k = 1; k &lt;= n; k++)&#123;    while (index &lt; n &amp;&amp; ranges[index].l &lt;= k)    &#123;        pq.push(ranges[index++]);    &#125;    while (pq.empty() == 0 &amp;&amp; pq.top().r &lt; k) pq.pop();    if (pq.empty())    &#123;        cout &lt;&lt; -1;        return 0;    &#125;    auto [l, r, pos] = pq.top();    pq.pop();    res[pos] = k;&#125;//这个循环遍历从1到n的每个点k,尝试为每个区间找到一个代表点.//它首先将所有左端点小于等于k的区间加入堆中.然后移除所有右端点小于k的区间(因为它们不包含k).//如果堆为空,意味着没有区间包含当前的k,程序输出-1并结束.否则,取出堆顶元素(即右端点最大的区间),将k作为该区间的代表点存储在res中.for (int x : res) cout &lt;&lt; x &lt;&lt; &quot; &quot;;//最后遍历结果向量res,输出每个区间的代表点//等价于:// for (size_t i = 0; i &lt; res.size(); ++i)// &#123;//   int x = res[i];//   cout &lt;&lt; x &lt;&lt; &quot; &quot;;// &#125;return 0;&#125;</code></pre><hr><h1 id="E-双生双宿之错"><a href="#E-双生双宿之错" class="headerlink" title="E 双生双宿之错"></a>E 双生双宿之错</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/E">https://ac.nowcoder.com/acm/contest/95323/E</a></p><p>知识点:排序，中位数定理</p><p>难度: 1782</p><p>知道或者能推出结论就不难,本质上是数学的一条线段上一个动点到多定点的距离和最小,只不过此题先二分,分别求其到中位数的距离.<br>但要考虑两段中位数相等时的问题,要分两种情况:<br>1.前面一半集体到中位数-1的距离,后一半到中位数的距离<br>2.前一半集体到中位数的距离,后一半到中位数-1的距离<br>二者要取min</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;ll calculate_cost(const vector&lt;int&gt;&amp; arr, int start, int end, int target)&#123;ll cost = 0;for (int i = start; i &lt; end; i++)&#123;    cost += fabs(arr[i]-target);&#125;return cost;&#125;void func()&#123;int T;cin &gt;&gt; T;for (int i = 0; i &lt; T; i++)&#123;    int n;    cin &gt;&gt; n;    vector&lt;int&gt;arr(n);    for (int i = 0; i &lt; n; i++)    &#123;        cin &gt;&gt; arr[i];    &#125;    sort(arr.begin(),arr.end());    int half = n / 2;    int a, b;    if (half % 2 == 0)    &#123;        a = (arr[half / 2 - 1] + arr[half / 2]) / 2;    &#125;    else    &#123;        a = arr[half / 2];    &#125;    if (half % 2 == 0)    &#123;        b = (arr[half+half / 2 - 1] + arr[half+half / 2]) / 2;    &#125;    else    &#123;        b = arr[half+half / 2];    &#125;    if (a != b)    &#123;        ll cost = calculate_cost(arr, 0, half, a) + calculate_cost(arr, half, n, b);        cout &lt;&lt; cost &lt;&lt; &quot;\n&quot;;    &#125;    else    &#123;        int option1_x = a - 1;        int option1_y = a;        ll cost1 = calculate_cost(arr, 0, half, option1_x) + calculate_cost(arr, half, n, option1_y);        int option2_x = a;        int option2_y = a + 1;        ll cost2 = calculate_cost(arr, 0, half, option2_x) + calculate_cost(arr, half, n, option2_y);        cout &lt;&lt; min(cost1, cost2) &lt;&lt; &quot;\n&quot;;    &#125;  &#125;&#125;int main() &#123;func();return 0;&#125;</code></pre><hr><h1 id="M-数值膨胀之美"><a href="#M-数值膨胀之美" class="headerlink" title="M 数值膨胀之美"></a>M 数值膨胀之美</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/M">https://ac.nowcoder.com/acm/contest/95323/M</a></p><p>知识点: 贪心,模拟,线段树,ST表.</p><p>难度: 1274</p><p>数据弱了,可以混过去,但现在不行(沮丧).出的非常好,成功使我被击败…<br>官方思路:<br>如果区间只有一个数,一定会选择min * 2, min * 2之后区间极差有哪些可能?<br>1.Max-2*Min(2Min还是最小值)<br>2.2Min-次小值(2Min比Max大)<br>3.Max-次小值(2Min比Max小,比次小值大)</p><p>已知:极差唯一有可能减小的,就是Min*2但怎么维护 *2区间的mzx,min和剩下的max,min?<br>ST表,线段树.<br>可发现,变化完次小值成了有决定的值,那么就又有方案给次小值乘2.<br>次小值要乘2,那就是最小值到次小值的区间一起乘2.<br>这个区间乘2以后,最小值可能会变成第三最小值,也可能是最小值乘2,最大值有可能是原来的最大值,也有可能是这个区间的最大值乘2</p><p>所以,极差是”乘2的区间的最大值和剩下的最大值取最大”–”乘2的区间的最小值与剩下的最小值取最小”</p><p>剩下的区间的max–就用原数组的max,如果TA被乘2了,那么乘2区间的max才是答案,剩下的区间真的max也不管用.<br>剩下的区间min:<br>1.先结构体排序,指针指向还没乘2的最小数–如果指向的数在乘2的区间中,指针++<br>2.开个容器记录还没被乘2的数–求最小值,删除指定的数,有重复值–multiset</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;pair&lt;int, int&gt;a[150000];int b[150000];void func()&#123;int n;cin &gt;&gt; n;for (int i = 0; i &lt; n; i++)&#123;    cin &gt;&gt; a[i].first;    a[i].second = i;    b[i] = a[i].first;&#125;a[n].first = 2e9;sort(a, a + n);int l = a[0].second, r = a[0].second;int ma = max(a[0].first * 2, a[n - 1].first);int res = ma - min(a[0].first * 2, a[1].first);// 遍历处理每个元素for(i=1; i&lt;n; i++)&#123;    // 扩展左边界到包含当前元素的原始位置    while(a[i].second &lt; l) &#123;        l--;        ma = max(ma, b[l]*2); // 更新最大值（可能与区间代价相关）    &#125;    // 扩展右边界到包含当前元素的原始位置    while(a[i].second &gt; r) &#123;        r++;        ma = max(ma, b[r]*2); // 更新最大值    &#125;    // 更新最优解：当前最大值 - 下一元素的值的两倍（或哨兵值）    res = min(res, ma - min(a[0].first*2, a[i+1].first));&#125;cout &lt;&lt; res;  &#125;int main() &#123;func();return 0;&#125;</code></pre><hr><h1 id="J-硝基甲苯之袭"><a href="#J-硝基甲苯之袭" class="headerlink" title="J 硝基甲苯之袭"></a>J 硝基甲苯之袭</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/J">https://ac.nowcoder.com/acm/contest/95323/J</a></p><p>知识点:位运算,数论</p><p>难度:1567</p><p>在解决此题之前我们先了解一个性质:<br>a ^ b &#x3D; c &lt;&#x3D;&gt; a ^ c &#x3D; b<br>那么对于本题:<br>ai^gcd&#x3D;aj<br>设gcd是x<br>cnt[ai]*cnt[aj]是满足ai ^ x&#x3D;aj的对数<br>但是x可未必是ai,aj的gcd,需要验证,是ans就加,不是continue<br>x枚举 2-sqrt(a) ai%x&#x3D;&#x3D;0<br>求ai ^ x &#x3D; d -&gt;cnt[d]</p><hr><pre><code>#include&lt;bits/stdc++.h&gt;using namespace std;int main()&#123;const int N = 2e5 + 1;int n;cin &gt;&gt; n;vector&lt;int&gt; a(N * 2 + 1);//开一个比较大的数组for(int i = 1; i &lt;= n; i++)&#123;    int x;    cin &gt;&gt; x;    a[x]++;//hash计数&#125;auto ans = 0ll;//ans用于累加满足条件的整数对的总次数.auto get = [&amp;](int x, int y)//get函数接收参数x和y,计算y += x得到k = x + y,然后检查x ^ k是否等于gcd(x,k).若成立,则累加a[x] * a[k]到ans.&#123;    y += x;    if((x ^ y) == gcd(x, y)) ans += 1ll * a[x] * a[y];&#125;;for(int i = 2; i &lt;= N; i += 2)&#123;    for(int j = 1; j * j &lt;= i; j++)&#123;        if(i % j) continue;        get(i, j);        if(j * j != i) get(i, i / j);//将一个定为偶数,另一个在此操作变为奇数,可枚举出所有情况.    &#125;遍历偶数 i,枚举其因数 j.对每个因数 j,调用 get(i,j) 和 get(i, i/j).&#125;cout &lt;&lt; ans &lt;&lt; endl;&#125;</code></pre><hr><h1 id="C-兢兢业业之移"><a href="#C-兢兢业业之移" class="headerlink" title="C 兢兢业业之移"></a>C 兢兢业业之移</h1><p>链接: <a href="https://ac.nowcoder.com/acm/contest/95323/C">https://ac.nowcoder.com/acm/contest/95323/C</a></p><p>知识点: 模拟&#x2F;最短路,超大模拟.</p><p>难度: 1952</p><p>考查代码量</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;int main() &#123;int T = 1;cin &gt;&gt; T; // 输入测试用例数量while (T--) &#123;    int n;    cin &gt;&gt; n; // 输入网格大小n    // 初始化网格，周围填充&#39;1&#39;作为边界    std::vector&lt;std::string&gt; s(n + 2, std::string(n + 2, &#39;1&#39;));    for (int i = 1; i &lt;= n; i++)     &#123;        cin &gt;&gt; s[i]; // 输入每行原始数据        s[i] = &quot;1&quot; + s[i] + &quot;1&quot;; // 左右添加边界&#39;1&#39;    &#125;    vector&lt;vector&lt;int&gt;&gt; ans; // 存储操作记录        // 定义移动函数    auto go = [&amp;](int x, int y, char c)     &#123;        int dx = x, dy = y; // 计算移动后的坐标        dx -= (c == &#39;U&#39;);   // 向上移动行号-1        dx += (c == &#39;D&#39;);   // 向下移动行号+1        dy -= (c == &#39;L&#39;);   // 向左移动列号-1        dy += (c == &#39;R&#39;);   // 向右移动列号+1        swap(s[x][y], s[dx][dy]); // 交换元素        ans.push_back(&#123;x, y, dx, dy&#125;); // 记录操作    &#125;;    // 第一阶段：垂直方向整理（向上推）    for (int i = 1; i &lt;= n; i++)     &#123;        for (int j = 1; j &lt;= n; j++)         &#123;            // 从当前位置向上遍历            for (int k = i; k &gt;= 1; k--)             &#123;                if (s[k][j] == &#39;1&#39; &amp;&amp; s[k-1][j] == &#39;0&#39;)                 &#123;                    go(k, j, &#39;U&#39;); // 将&#39;1&#39;向上移动到&#39;0&#39;的位置                &#125; else break; // 遇到障碍停止            &#125;        &#125;    &#125;    // 第二阶段：水平方向整理（向左推）    for (int i = 1; i &lt;= n; i++)     &#123;        for (int j = 1; j &lt;= n; j++)         &#123;            // 从当前位置向左遍历            for (int k = j; k &gt;= 1; k--)             &#123;                if (s[i][k] == &#39;1&#39; &amp;&amp; s[i][k-1] == &#39;0&#39;)                 &#123;                    go(i, k, &#39;L&#39;); // 将&#39;1&#39;向左移动到&#39;0&#39;的位置                &#125; else break;            &#125;        &#125;    &#125;    // 第三阶段：处理右上区域    for (int i = n/2; i &gt;= 1; i--)    &#123; // 从中间行向上        for (int j = n; j &gt; n/2; j--)         &#123; // 右侧列向左            if (s[i][j] == &#39;0&#39;) continue; // 跳过空位            // 在左上区域寻找空位            int x = 0, y = 0;            for (int k = 1; k &lt;= n/2; k++)             &#123;                for (int l = 1; l &lt;= n/2; l++)                 &#123;                    if (s[k][l] == &#39;1&#39;) continue;                    x = k; y = l;                    break;                &#125;                if (x) break;            &#125;            // 垂直向下移动            for (int k = i; k &lt; x; k++) go(k, j, &#39;D&#39;);            // 水平向左移动            for (int k = j; k &gt; y; k--) go(x, k, &#39;L&#39;);        &#125;    &#125;    // 第四阶段：处理右下区域    for (int i = n; i &gt; n/2; i--)    &#123; // 从底部行向上        for (int j = n/2; j &gt;= 1; j--)         &#123; // 中间列向左            if (s[i][j] == &#39;0&#39;) continue;            // 在左上区域寻找空位            int x = 0, y = 0;            for (int k = 1; k &lt;= n/2; k++)             &#123;                for (int l = 1; l &lt;= n/2; l++)                 &#123;                    if (s[k][l] == &#39;1&#39;) continue;                    x = k; y = l;                    break;                &#125;                if (x) break;            &#125;            // 水平向右移动（实际是向左填充）            for (int k = j; k &lt; y; k++) go(i, k, &#39;R&#39;);            // 垂直向上移动            for (int k = i; k &gt; x; k--) go(k, y, &#39;U&#39;);        &#125;    &#125;    // 输出操作步骤    cout &lt;&lt; ans.size() &lt;&lt; endl;    for (auto&amp; i : ans)    &#123;        for (auto&amp; j : i) cout &lt;&lt; j &lt;&lt; &quot; &quot;;        cout &lt;&lt; endl;    &#125;  &#125;&#125;</code></pre><hr><h1 id="F-双生双宿之探"><a href="#F-双生双宿之探" class="headerlink" title="F.双生双宿之探"></a>F.双生双宿之探</h1><p>知识点: 双指针,前缀和,逻辑,线段树,ST表 </p><p>难度: 2213</p><p>难题,首先考虑暴力n^3肯定超时.<br>稍微优化一下,l到r中数的个数＞2了,r就不要往后走了</p><p>优化的基本思路:1.&lt;循环优化&gt;(1)变成区间端点 (2)拆成多个小区间 &#x2F;&#x2F;一重一重去看能丢掉哪个不(l,r同理,得去掉某一个)<br>               2.&lt;计数优化&gt;前缀和</p><p>先把每一个符合条件的LR最大范围求出来(知道最左边在哪最右边在哪),然后在这个区间里去找符合条件的区间有多少对</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func() &#123;int T;cin &gt;&gt; T;for(int i=0; i&lt;T; i++) &#123;  // 处理每个测试用例    int n;    cin &gt;&gt; n;    vector&lt;int&gt; a(n + 1);  // 数组从索引1开始    for (int i = 1; i &lt;= n; i++) &#123;        cin &gt;&gt; a[i];    &#125;    vector&lt;int&gt; f(n + 1);  // 前缀和数组    ll ans = 0;            for (int i = 1; i &lt;= n; i++)             &#123;        set&lt;int&gt; st;        // 记录当前窗口内的不同元素        map&lt;int, int&gt; mp;   // 统计前缀和出现次数        mp[0]++;            // 初始前缀和为0的情况        f[i-1] = 0;         // 初始化前缀和                for (int j = i; j &lt;= n; j++)                 &#123;            st.insert(a[j]);            if (st.size() &gt; 2)             &#123;  // 元素超过2种，调整窗口                i = j;                            st.clear();                               for (; i &gt;= 1; i--)                &#123;                    st.insert(a[i]);                    if (st.size() &gt; 2) break;                &#125;                break;  // 退出内层循环            &#125;            // 更新前缀和            f[j] = f[j-1] + (a[j] == a[i] ? 1 : -1);            ans += mp[f[j]];  // 累加当前前缀和的出现次数            mp[f[j]]++;       // 记录当前前缀和            if (j == n) i = n; // 强制退出外层循环        &#125;    &#125;    cout &lt;&lt; ans &lt;&lt; endl;  &#125;&#125;int main()&#123;func();return 0;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法竞赛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ACM新手村 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法技巧1(个人总结--持续更新中)</title>
       <link href="/2024/11/09/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93--%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/"/>
       <url>/2024/11/09/%E7%AE%97%E6%B3%95%E6%8A%80%E5%B7%A7(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93--%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD)/</url>
@@ -79,31 +154,6 @@
     
     
     <entry>
-      <title>我的第一篇BLOG搭建文章</title>
-      <link href="/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/"/>
-      <url>/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
-      
-        <content type="html"><![CDATA[<p>笔者在这里使用的是hexo+github的个人博客搭建,如有错误请各位大佬指正。</p><h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1.到 <a href="https://nodejs.cn/">https://nodejs.cn/</a> 下载Node.js下载常用版就行。为hexo运行搭建环境。<br>2.（1）github注册。如果English水平不高建议配上网易有道翻译。按web流程进行github注册。<br>  （2）创建代码库，勾选Public，在Repository name中按”用户名.github.io”(一定是这格式！)创建。<br>   (3) 可以自己在code&lt;&gt;选项上进行测试.<br>3. git for windows安装<br>   (1)输入<a href="https://gitforwindows.org/%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E3%80%82">https://gitforwindows.org/进入官网点击下载。</a><br>   (2)git安装默认C盘，可以根据需要自行更改。<br>   (3)勾选 don’t create a start menu folder<br>   (4)注意！！！！！github把master改名main了,配置congif要更改!!也就是branch:master改成branch:main!!<br>   (5)后面默认就行。<br>4.githubShh配置<br>   (1)以管理员身份打开git.bash.exe.<br>   (2)输入命令 ssh-keygen -t rsa -C “github邮箱注册地址”(如果找不到到C盘搜.shh前提是环境安装好)然后回车。<br>   (3)打开github-settings-deploy keys title写用户名，key找到”id rua.pub”复制粘贴。</p><h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   (1)打开<a href="https://hexo.io/zh-cn/dots/">https://hexo.io/zh-cn/dots/</a><br>   (2)新建文件夹（命名自取）<br>   (3)在此文件夹下用管理员身份打开git.bash.exe.输入npm install hexo-cli -g<br>   (4)安装完用hexo -v验证。（确保路径正确）<br>   (5)在对应路径下输入hexo init初始化.<br>   (6)可以hexo s启动blog.<br>   当然这还未完成，还要挂到github上。<br>   (7)Ctrl+c先关掉。<br>   (8)好了，现在我们还需要装一个git部署插件,输入 snpm install –save hexo-deployer-git回车。<br>   (9)找到_config.yml用记事本打开，划到最底部，找到Depolyment,按如下格式配置。</p><pre><code> type: git repository: 自己的地址 branch:main(注意缩进与空格）</code></pre><p>   (10) hexo d部署(弹出方框输入账号）<br>   (11)成功！！！</p><h2 id="问题反思与感想"><a href="#问题反思与感想" class="headerlink" title="问题反思与感想"></a>问题反思与感想</h2><p>(1)短短几十行，但真正实践起来却要数十倍的时间，实践中，初步了解了0-1的艰难，各种问题层出不穷。<br>eg:路径不对—cd C:\  等去切换。<br>   获取管理员权限。<br>   上面的yml文件未配置好（细节在上）<br>   等。。<br>(2)总之，笔者在此受益颇多,感谢互联网的知识，优秀的作者，让我们前方的路清晰明朗。谢谢！！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 新手村 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 博客搭建 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>牛客周赛round64</title>
       <link href="/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/"/>
       <url>/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/</url>
@@ -146,6 +196,31 @@
     </entry>
     
     
+    
+    <entry>
+      <title>我的第一篇BLOG搭建文章</title>
+      <link href="/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/"/>
+      <url>/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<p>笔者在这里使用的是hexo+github的个人博客搭建,如有错误请各位大佬指正。</p><h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1.到 <a href="https://nodejs.cn/">https://nodejs.cn/</a> 下载Node.js下载常用版就行。为hexo运行搭建环境。<br>2.（1）github注册。如果English水平不高建议配上网易有道翻译。按web流程进行github注册。<br>  （2）创建代码库，勾选Public，在Repository name中按”用户名.github.io”(一定是这格式！)创建。<br>   (3) 可以自己在code&lt;&gt;选项上进行测试.<br>3. git for windows安装<br>   (1)输入<a href="https://gitforwindows.org/%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E3%80%82">https://gitforwindows.org/进入官网点击下载。</a><br>   (2)git安装默认C盘，可以根据需要自行更改。<br>   (3)勾选 don’t create a start menu folder<br>   (4)注意！！！！！github把master改名main了,配置congif要更改!!也就是branch:master改成branch:main!!<br>   (5)后面默认就行。<br>4.githubShh配置<br>   (1)以管理员身份打开git.bash.exe.<br>   (2)输入命令 ssh-keygen -t rsa -C “github邮箱注册地址”(如果找不到到C盘搜.shh前提是环境安装好)然后回车。<br>   (3)打开github-settings-deploy keys title写用户名，key找到”id rua.pub”复制粘贴。</p><h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   (1)打开<a href="https://hexo.io/zh-cn/dots/">https://hexo.io/zh-cn/dots/</a><br>   (2)新建文件夹（命名自取）<br>   (3)在此文件夹下用管理员身份打开git.bash.exe.输入npm install hexo-cli -g<br>   (4)安装完用hexo -v验证。（确保路径正确）<br>   (5)在对应路径下输入hexo init初始化.<br>   (6)可以hexo s启动blog.<br>   当然这还未完成，还要挂到github上。<br>   (7)Ctrl+c先关掉。<br>   (8)好了，现在我们还需要装一个git部署插件,输入 snpm install –save hexo-deployer-git回车。<br>   (9)找到_config.yml用记事本打开，划到最底部，找到Depolyment,按如下格式配置。</p><pre><code> type: git repository: 自己的地址 branch:main(注意缩进与空格）</code></pre><p>   (10) hexo d部署(弹出方框输入账号）<br>   (11)成功！！！</p><h2 id="问题反思与感想"><a href="#问题反思与感想" class="headerlink" title="问题反思与感想"></a>问题反思与感想</h2><p>(1)短短几十行，但真正实践起来却要数十倍的时间，实践中，初步了解了0-1的艰难，各种问题层出不穷。<br>eg:路径不对—cd C:\  等去切换。<br>   获取管理员权限。<br>   上面的yml文件未配置好（细节在上）<br>   等。。<br>(2)总之，笔者在此受益颇多,感谢互联网的知识，优秀的作者，让我们前方的路清晰明朗。谢谢！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 新手村 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
     
@@ -162,42 +237,9 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>����</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -217,11 +259,44 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>����</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
       
     </entry>
     
