@@ -179,31 +179,6 @@
     
     
     <entry>
-      <title>我的第一篇BLOG搭建文章</title>
-      <link href="/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/"/>
-      <url>/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
-      
-        <content type="html"><![CDATA[<p>笔者在这里使用的是hexo+github的个人博客搭建,如有错误请各位大佬指正。</p><h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1.到 <a href="https://nodejs.cn/">https://nodejs.cn/</a> 下载Node.js下载常用版就行。为hexo运行搭建环境。<br>2.（1）github注册。如果English水平不高建议配上网易有道翻译。按web流程进行github注册。<br>  （2）创建代码库，勾选Public，在Repository name中按”用户名.github.io”(一定是这格式！)创建。<br>   (3) 可以自己在code&lt;&gt;选项上进行测试.<br>3. git for windows安装<br>   (1)输入<a href="https://gitforwindows.org/%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E3%80%82">https://gitforwindows.org/进入官网点击下载。</a><br>   (2)git安装默认C盘，可以根据需要自行更改。<br>   (3)勾选 don’t create a start menu folder<br>   (4)注意！！！！！github把master改名main了,配置congif要更改!!也就是branch:master改成branch:main!!<br>   (5)后面默认就行。<br>4.githubShh配置<br>   (1)以管理员身份打开git.bash.exe.<br>   (2)输入命令 ssh-keygen -t rsa -C “github邮箱注册地址”(如果找不到到C盘搜.shh前提是环境安装好)然后回车。<br>   (3)打开github-settings-deploy keys title写用户名，key找到”id rua.pub”复制粘贴。</p><h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   (1)打开<a href="https://hexo.io/zh-cn/dots/">https://hexo.io/zh-cn/dots/</a><br>   (2)新建文件夹（命名自取）<br>   (3)在此文件夹下用管理员身份打开git.bash.exe.输入npm install hexo-cli -g<br>   (4)安装完用hexo -v验证。（确保路径正确）<br>   (5)在对应路径下输入hexo init初始化.<br>   (6)可以hexo s启动blog.<br>   当然这还未完成，还要挂到github上。<br>   (7)Ctrl+c先关掉。<br>   (8)好了，现在我们还需要装一个git部署插件,输入 snpm install –save hexo-deployer-git回车。<br>   (9)找到_config.yml用记事本打开，划到最底部，找到Depolyment,按如下格式配置。</p><pre><code> type: git repository: 自己的地址 branch:main(注意缩进与空格）</code></pre><p>   (10) hexo d部署(弹出方框输入账号）<br>   (11)成功！！！</p><h2 id="问题反思与感想"><a href="#问题反思与感想" class="headerlink" title="问题反思与感想"></a>问题反思与感想</h2><p>(1)短短几十行，但真正实践起来却要数十倍的时间，实践中，初步了解了0-1的艰难，各种问题层出不穷。<br>eg:路径不对—cd C:\  等去切换。<br>   获取管理员权限。<br>   上面的yml文件未配置好（细节在上）<br>   等。。<br>(2)总之，笔者在此受益颇多,感谢互联网的知识，优秀的作者，让我们前方的路清晰明朗。谢谢！！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 新手村 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 博客搭建 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>牛客周赛round64</title>
       <link href="/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/"/>
       <url>/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/</url>
@@ -246,14 +221,39 @@
     </entry>
     
     
+    
+    <entry>
+      <title>我的第一篇BLOG搭建文章</title>
+      <link href="/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/"/>
+      <url>/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<p>笔者在这里使用的是hexo+github的个人博客搭建,如有错误请各位大佬指正。</p><h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1.到 <a href="https://nodejs.cn/">https://nodejs.cn/</a> 下载Node.js下载常用版就行。为hexo运行搭建环境。<br>2.（1）github注册。如果English水平不高建议配上网易有道翻译。按web流程进行github注册。<br>  （2）创建代码库，勾选Public，在Repository name中按”用户名.github.io”(一定是这格式！)创建。<br>   (3) 可以自己在code&lt;&gt;选项上进行测试.<br>3. git for windows安装<br>   (1)输入<a href="https://gitforwindows.org/%E8%BF%9B%E5%85%A5%E5%AE%98%E7%BD%91%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E3%80%82">https://gitforwindows.org/进入官网点击下载。</a><br>   (2)git安装默认C盘，可以根据需要自行更改。<br>   (3)勾选 don’t create a start menu folder<br>   (4)注意！！！！！github把master改名main了,配置congif要更改!!也就是branch:master改成branch:main!!<br>   (5)后面默认就行。<br>4.githubShh配置<br>   (1)以管理员身份打开git.bash.exe.<br>   (2)输入命令 ssh-keygen -t rsa -C “github邮箱注册地址”(如果找不到到C盘搜.shh前提是环境安装好)然后回车。<br>   (3)打开github-settings-deploy keys title写用户名，key找到”id rua.pub”复制粘贴。</p><h2 id="hexo使用"><a href="#hexo使用" class="headerlink" title="hexo使用"></a>hexo使用</h2><p>   (1)打开<a href="https://hexo.io/zh-cn/dots/">https://hexo.io/zh-cn/dots/</a><br>   (2)新建文件夹（命名自取）<br>   (3)在此文件夹下用管理员身份打开git.bash.exe.输入npm install hexo-cli -g<br>   (4)安装完用hexo -v验证。（确保路径正确）<br>   (5)在对应路径下输入hexo init初始化.<br>   (6)可以hexo s启动blog.<br>   当然这还未完成，还要挂到github上。<br>   (7)Ctrl+c先关掉。<br>   (8)好了，现在我们还需要装一个git部署插件,输入 snpm install –save hexo-deployer-git回车。<br>   (9)找到_config.yml用记事本打开，划到最底部，找到Depolyment,按如下格式配置。</p><pre><code> type: git repository: 自己的地址 branch:main(注意缩进与空格）</code></pre><p>   (10) hexo d部署(弹出方框输入账号）<br>   (11)成功！！！</p><h2 id="问题反思与感想"><a href="#问题反思与感想" class="headerlink" title="问题反思与感想"></a>问题反思与感想</h2><p>(1)短短几十行，但真正实践起来却要数十倍的时间，实践中，初步了解了0-1的艰难，各种问题层出不穷。<br>eg:路径不对—cd C:\  等去切换。<br>   获取管理员权限。<br>   上面的yml文件未配置好（细节在上）<br>   等。。<br>(2)总之，笔者在此受益颇多,感谢互联网的知识，优秀的作者，让我们前方的路清晰明朗。谢谢！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 新手村 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>����</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -262,20 +262,9 @@
     
     
     <entry>
-      <title></title>
-      <link href="/css/custom.css"/>
-      <url>/css/custom.css</url>
-      
-        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>����</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -295,9 +284,9 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
@@ -306,9 +295,9 @@
     
     
     <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
@@ -322,6 +311,17 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/css/custom.css"/>
+      <url>/css/custom.css</url>
+      
+        <content type="html"><![CDATA[#footer {  background: transparent !important;}#page-header {  background: transparent !important;}#footer::before {  background: transparent !important;}#page-header::before {  background: transparent !important;}[data-theme="dark"] #footer::before {  background: transparent !important;}[data-theme="dark"] #page-header::before {    background: transparent !important;}]]></content>
       
     </entry>
     
