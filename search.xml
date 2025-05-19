@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2025/05/19/VP-ACM-CCPC-WUHAN/"/>
-      <url>/2025/05/19/VP-ACM-CCPC-WUHAN/</url>
+      <title>VP-ACM-ICPC-WUHAN</title>
+      <link href="/2025/05/19/VP-ACM-ICPC-WUHAN/"/>
+      <url>/2025/05/19/VP-ACM-ICPC-WUHAN/</url>
       
         <content type="html"><![CDATA[<h1 id="VP-ACM-ICPC-WUHAN"><a href="#VP-ACM-ICPC-WUHAN" class="headerlink" title="VP-ACM-ICPC-WUHAN"></a>VP-ACM-ICPC-WUHAN</h1><p>A</p><p>思路:求公共区间的并集,取最小值.</p><p>小模拟,签到.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;unordered_set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ld long double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PI acos(-1.0)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mem(x) memset(x, 0, sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  MOD   1000000007</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  ER  0.00001</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 200005</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> inf 0x7FFFFFFF</span></span><br><span class="line"><span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123; &#123;<span class="number">0</span>,<span class="number">-1</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">-1</span>,<span class="number">0</span>&#125; &#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">poss</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> pos;</span><br><span class="line">    <span class="type">int</span> l;</span><br><span class="line">    <span class="type">int</span> r;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> n, q;</span><br><span class="line">        cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">        <span class="type">int</span> a[<span class="number">105</span>];</span><br><span class="line">        poss pp[<span class="number">105</span>];</span><br><span class="line">        map&lt;<span class="type">int</span>, pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;posMap;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; pp[i].pos &gt;&gt; pp[i].l &gt;&gt; pp[i].r;</span><br><span class="line">            <span class="keyword">if</span> (posMap.<span class="built_in">find</span>(pp[i].pos) == posMap.<span class="built_in">end</span>())</span><br><span class="line">            &#123;</span><br><span class="line">                posMap[pp[i].pos] = <span class="built_in">make_pair</span>(pp[i].l,pp[i].r);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                posMap[pp[i].pos].first = <span class="built_in">max</span>(posMap[pp[i].pos].first, pp[i].l);</span><br><span class="line">                posMap[pp[i].pos].second = <span class="built_in">min</span>(posMap[pp[i].pos].second, pp[i].r);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ll ans = <span class="number">0</span>;<span class="comment">//呜呜,不开long long 见祖宗!</span></span><br><span class="line">        <span class="type">bool</span> flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = posMap.<span class="built_in">begin</span>(); it != posMap.<span class="built_in">end</span>(); ++it) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (it-&gt;second.first &gt; it-&gt;second.second)</span><br><span class="line">            &#123;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[it-&gt;first] &lt;= it-&gt;second.second &amp;&amp; it-&gt;second.first &lt;= a[it-&gt;first])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    ans += <span class="built_in">min</span>(<span class="built_in">fabs</span>(a[it-&gt;first] - it-&gt;second.first), <span class="built_in">fabs</span>(a[it-&gt;first] - it-&gt;second.second));</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; it-&gt;first &lt;&lt; &quot; &quot; &lt;&lt; it-&gt;second.first &lt;&lt; &quot; &quot; &lt;&lt; it-&gt;second.second &lt;&lt; &quot;\n&quot;;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;-1\n&quot;</span>;</span><br><span class="line">        &#125;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line">    <span class="built_in">func</span>();</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      <categories>
+          
+          <category> CCPC </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ACM-ICPC </tag>
+            
+        </tags>
       
     </entry>
     
@@ -192,31 +204,6 @@
     
     
     <entry>
-      <title>牛客周赛round64</title>
-      <link href="/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/"/>
-      <url>/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/</url>
-      
-        <content type="html"><![CDATA[<p>下面依据(1–10)星级评判本次周赛:</p><h1 id="小红的对错判断"><a href="#小红的对错判断" class="headerlink" title="小红的对错判断"></a>小红的对错判断</h1><p>题目描述<br>小红在判题的时候,经常发现选手把”Yes”输出成”YES”或者”yes”,她希望写一个spj(special judge)来判断选手是否输出了”Yes”.你能帮帮她吗?<br>输入描述:<br>一个长度不超过3的,仅由小写字母或者大写字母组成.<br>输出描述:<br>若字符串可以通过大小写转换变成”Yes”,则输出”accept”.否则输出”wrong answer”.</p><p>评价:  1星,无脑签到题,考查字符串,toupper,tolower函数的用法.如果硬用if,6种情况.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;using namespace std;void func()&#123;char crr[3] = &#123;0&#125;;scanf(&quot;%s&quot;,crr);for (int i = 0; crr[i]; i++)&#123;    crr[i]=toupper(crr[i]);&#125;if (crr[0] == &#39;Y&#39; &amp;&amp; crr[1] == &#39;E&#39; &amp;&amp; crr[2] == &#39;S&#39;)&#123;    printf(&quot;accept&quot;);&#125;else&#123;    printf(&quot;wrong answer&quot;);&#125;&#125;int main()&#123;func();return 0;&#125;</code></pre><hr><h1 id="小红的幂表达"><a href="#小红的幂表达" class="headerlink" title="小红的幂表达"></a>小红的幂表达</h1><p>题目描述<br>小红拿到了一个正整数,请你帮小红将其表示为幂(a^b)的形式.<br>输入描述:</p><p>一个正整数x (2≤x≤10^5)<br>输出描述:<br>第一行输出x.<br>接下来每一行输出一个幂的表达式。<br>请按指数从小到大的顺序输出。</p><p>评价: 2星,高一数学对数函数换底公式.当时没有这么想,直接优化暴力就过了.</p><hr><pre><code>//实战AC:重点在func1暴力找对数和指数#include &lt;bits/stdc++.h&gt;using namespace std;void func1(int x)&#123; for (int i = sqrt(x); i &gt; 1; i--)&#123;    int j = 1;    int m = i;    while (m &lt; x)    &#123;        m = m * i;        j++;    &#125;    if (m == x)    &#123;        printf(&quot;=%d^%d\n&quot;, i, j);    &#125;&#125;&#125;void func()&#123;int x;cin &gt;&gt; x;cout &lt;&lt; x&lt;&lt;endl;cout &lt;&lt;&quot;=&quot;&lt;&lt; x &lt;&lt; &quot;^&quot; &lt;&lt; &quot;1&quot; &lt;&lt; endl;func1(x);&#125;int main()&#123;func();return 0;&#125;正规解法(也是暴力遍历,复杂度跟我差不多):void func1(int x)&#123; for (int i = sqrt(x); i &gt; 0; i--)&#123;    int m = log2(x) / log2(i);    if (x == pow(i , m))//pow明显增加时间复杂度.    &#123;        printf(&quot;=%d^%d\n&quot;, i, m);    &#125;&#125;&#125;</code></pre><hr><h1 id="小红的前缀询问"><a href="#小红的前缀询问" class="headerlink" title="小红的前缀询问"></a>小红的前缀询问</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/92662/C">https://ac.nowcoder.com/acm/contest/92662/C</a></p><p>题目大意:</p><p>小红拿到了一个数组,她有若干次询问,每次询问一个前缀内有多少对相同的数.你能帮帮她吗?</p><p>评价: 4星,从此题起开始上难度,当时map不了解,以后单独开一个系列总结.本题考查map(红黑树),字符串,前缀和.<br>思路:<br>只需要记录在每个前缀前相同的数字出现次数,出现多少次ans就需要加多少ans需在上一个前缀的基础上累加数据大小比较大,开数组记录不可行,需要用到map.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;using namespace std;using ll=long long;int n;void solve()&#123; cin&gt;&gt;n; map&lt;int,int&gt;mp;// 声明一个键和值都是整数的map有点像动态哈希.  ll ans=0;  for(int i=1;i&lt;=n;i++) &#123; int x; cin&gt;&gt;x; ans+=mp[x];//记录各个值上的相同对数. cout&lt;&lt;mp[x]&lt;&lt;&quot; &quot;; mp[x]++; cout&lt;&lt;ans&lt;&lt;&quot; &quot;;//依次输出 &#125;  &#125;int main()&#123;solve();return 0;&#125;</code></pre><hr><h1 id="小红和小紫的博弈游戏"><a href="#小红和小紫的博弈游戏" class="headerlink" title="小红和小紫的博弈游戏"></a>小红和小紫的博弈游戏</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/92662/D">https://ac.nowcoder.com/acm/contest/92662/D</a></p><p>题目大意: 2*2矩阵,两人轮流操作,每次操作时选择两个相邻的正整数,使它们同时减1.谁先无法操作谁就输了.<br>          两人都使用最优策略的情况下,谁将获得最终胜利?</p><p>评价: 3星,重点考查算法的构建,数学,博弈论,对语法的要求并不高.</p><p>思路: 由于是2*2矩阵,根据题意(相邻)反过来找不相邻,假设二维矩阵a[2][2],不相邻为a[0][0],a[1][1]与a[1][0],a[0][1].<br>      将其作为一组,设为(a1,a4),(a2,a3),每一次对一组内的一个数操作,另一组全部减1,所以可分别对二组求和,取其min.<br>      然后min在判断奇偶性.为奇数前者胜,偶数后者.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int t;cin &gt;&gt; t;int a[2][2] = &#123; 0 &#125;;for (int i = 0; i &lt; t; i++)&#123;    for (int j = 0; j &lt; 2; j++)    &#123;        for (int k = 0; k &lt; 2; k++)        &#123;            cin &gt;&gt; a[j][k];        &#125;    &#125;    int sum1 = a[0][0] + a[1][1];    int sum2 = a[1][0] + a[0][1];    int summin = min(sum1, sum2);    if (summin % 2 == 0)    &#123;        printf(&quot;yukari\n&quot;);    &#125;    else    &#123;        printf(&quot;kou\n&quot;);    &#125;&#125;&#125;int main()&#123; func();return 0;&#125;</code></pre><hr>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法竞赛 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 朝花夕拾 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>我的第一篇BLOG搭建文章</title>
       <link href="/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/"/>
       <url>/2024/10/06/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87BLOG%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0/</url>
@@ -234,6 +221,31 @@
         <tags>
             
             <tag> 博客搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>牛客周赛round64</title>
+      <link href="/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/"/>
+      <url>/2024/10/06/%E7%89%9B%E5%AE%A2%E5%91%A8%E8%B5%9Bround64/</url>
+      
+        <content type="html"><![CDATA[<p>下面依据(1–10)星级评判本次周赛:</p><h1 id="小红的对错判断"><a href="#小红的对错判断" class="headerlink" title="小红的对错判断"></a>小红的对错判断</h1><p>题目描述<br>小红在判题的时候,经常发现选手把”Yes”输出成”YES”或者”yes”,她希望写一个spj(special judge)来判断选手是否输出了”Yes”.你能帮帮她吗?<br>输入描述:<br>一个长度不超过3的,仅由小写字母或者大写字母组成.<br>输出描述:<br>若字符串可以通过大小写转换变成”Yes”,则输出”accept”.否则输出”wrong answer”.</p><p>评价:  1星,无脑签到题,考查字符串,toupper,tolower函数的用法.如果硬用if,6种情况.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;using namespace std;void func()&#123;char crr[3] = &#123;0&#125;;scanf(&quot;%s&quot;,crr);for (int i = 0; crr[i]; i++)&#123;    crr[i]=toupper(crr[i]);&#125;if (crr[0] == &#39;Y&#39; &amp;&amp; crr[1] == &#39;E&#39; &amp;&amp; crr[2] == &#39;S&#39;)&#123;    printf(&quot;accept&quot;);&#125;else&#123;    printf(&quot;wrong answer&quot;);&#125;&#125;int main()&#123;func();return 0;&#125;</code></pre><hr><h1 id="小红的幂表达"><a href="#小红的幂表达" class="headerlink" title="小红的幂表达"></a>小红的幂表达</h1><p>题目描述<br>小红拿到了一个正整数,请你帮小红将其表示为幂(a^b)的形式.<br>输入描述:</p><p>一个正整数x (2≤x≤10^5)<br>输出描述:<br>第一行输出x.<br>接下来每一行输出一个幂的表达式。<br>请按指数从小到大的顺序输出。</p><p>评价: 2星,高一数学对数函数换底公式.当时没有这么想,直接优化暴力就过了.</p><hr><pre><code>//实战AC:重点在func1暴力找对数和指数#include &lt;bits/stdc++.h&gt;using namespace std;void func1(int x)&#123; for (int i = sqrt(x); i &gt; 1; i--)&#123;    int j = 1;    int m = i;    while (m &lt; x)    &#123;        m = m * i;        j++;    &#125;    if (m == x)    &#123;        printf(&quot;=%d^%d\n&quot;, i, j);    &#125;&#125;&#125;void func()&#123;int x;cin &gt;&gt; x;cout &lt;&lt; x&lt;&lt;endl;cout &lt;&lt;&quot;=&quot;&lt;&lt; x &lt;&lt; &quot;^&quot; &lt;&lt; &quot;1&quot; &lt;&lt; endl;func1(x);&#125;int main()&#123;func();return 0;&#125;正规解法(也是暴力遍历,复杂度跟我差不多):void func1(int x)&#123; for (int i = sqrt(x); i &gt; 0; i--)&#123;    int m = log2(x) / log2(i);    if (x == pow(i , m))//pow明显增加时间复杂度.    &#123;        printf(&quot;=%d^%d\n&quot;, i, m);    &#125;&#125;&#125;</code></pre><hr><h1 id="小红的前缀询问"><a href="#小红的前缀询问" class="headerlink" title="小红的前缀询问"></a>小红的前缀询问</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/92662/C">https://ac.nowcoder.com/acm/contest/92662/C</a></p><p>题目大意:</p><p>小红拿到了一个数组,她有若干次询问,每次询问一个前缀内有多少对相同的数.你能帮帮她吗?</p><p>评价: 4星,从此题起开始上难度,当时map不了解,以后单独开一个系列总结.本题考查map(红黑树),字符串,前缀和.<br>思路:<br>只需要记录在每个前缀前相同的数字出现次数,出现多少次ans就需要加多少ans需在上一个前缀的基础上累加数据大小比较大,开数组记录不可行,需要用到map.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;using namespace std;using ll=long long;int n;void solve()&#123; cin&gt;&gt;n; map&lt;int,int&gt;mp;// 声明一个键和值都是整数的map有点像动态哈希.  ll ans=0;  for(int i=1;i&lt;=n;i++) &#123; int x; cin&gt;&gt;x; ans+=mp[x];//记录各个值上的相同对数. cout&lt;&lt;mp[x]&lt;&lt;&quot; &quot;; mp[x]++; cout&lt;&lt;ans&lt;&lt;&quot; &quot;;//依次输出 &#125;  &#125;int main()&#123;solve();return 0;&#125;</code></pre><hr><h1 id="小红和小紫的博弈游戏"><a href="#小红和小紫的博弈游戏" class="headerlink" title="小红和小紫的博弈游戏"></a>小红和小紫的博弈游戏</h1><p>链接:<a href="https://ac.nowcoder.com/acm/contest/92662/D">https://ac.nowcoder.com/acm/contest/92662/D</a></p><p>题目大意: 2*2矩阵,两人轮流操作,每次操作时选择两个相邻的正整数,使它们同时减1.谁先无法操作谁就输了.<br>          两人都使用最优策略的情况下,谁将获得最终胜利?</p><p>评价: 3星,重点考查算法的构建,数学,博弈论,对语法的要求并不高.</p><p>思路: 由于是2*2矩阵,根据题意(相邻)反过来找不相邻,假设二维矩阵a[2][2],不相邻为a[0][0],a[1][1]与a[1][0],a[0][1].<br>      将其作为一组,设为(a1,a4),(a2,a3),每一次对一组内的一个数操作,另一组全部减1,所以可分别对二组求和,取其min.<br>      然后min在判断奇偶性.为奇数前者胜,偶数后者.</p><hr><pre><code>#include &lt;bits/stdc++.h&gt;#define ll long long#define ld long doubleusing namespace std;void func()&#123;int t;cin &gt;&gt; t;int a[2][2] = &#123; 0 &#125;;for (int i = 0; i &lt; t; i++)&#123;    for (int j = 0; j &lt; 2; j++)    &#123;        for (int k = 0; k &lt; 2; k++)        &#123;            cin &gt;&gt; a[j][k];        &#125;    &#125;    int sum1 = a[0][0] + a[1][1];    int sum2 = a[1][0] + a[0][1];    int summin = min(sum1, sum2);    if (summin % 2 == 0)    &#123;        printf(&quot;yukari\n&quot;);    &#125;    else    &#123;        printf(&quot;kou\n&quot;);    &#125;&#125;&#125;int main()&#123; func();return 0;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法竞赛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 朝花夕拾 </tag>
             
         </tags>
       
@@ -270,17 +282,6 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/css/custom.css"/>
       <url>/css/custom.css</url>
@@ -292,11 +293,11 @@
     
     
     <entry>
-      <title>����</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
     </entry>
     
@@ -306,6 +307,17 @@
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>����</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -325,22 +337,22 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>music</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>music</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<p>continue to update!</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
